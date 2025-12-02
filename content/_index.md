@@ -1,8 +1,11 @@
 +++
-template = 'base.html'
+title = 'Ivan Santiago'
+template = 'index.html'
 +++
 
 # Hello, world!
 
-My first content
+Olá, meu nome é **Ivan Santiago**!
+
+Esse é o espaço na internet para conhecer as coisas que eu penso e faço, seja bem-vindo!
 

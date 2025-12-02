@@ -1,12 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Hello, world!</title>
-    </head>
-    <body>
-        {{ page.content }}
-    </body>
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    >
+    <link rel="stylesheet" href="styles.css">
+    {% block header %}{% endblock header %}
+  </head>
+  <body>
+    <main class="container">
+    <div style="text-align: center;">
+        {% block content %}{% endblock content %}
+    </div>
+    </main>
+  </body>
 </html>
