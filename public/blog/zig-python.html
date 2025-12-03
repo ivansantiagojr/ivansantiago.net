@@ -8,16 +8,81 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
     >
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/blog.css">
     
     <title>Construindo bibliotecas Python com Zig</title>
 
   </head>
   <body>
     <main class="container">
-    <div style="text-align: center;">
+    <div class="content-container">
         
     <h1>Construindo Bibliotecas Python com Zig - Introdução a Ziggy Pydust</h1>
+<h1>Índice</h1>
+<ol>
+<li>O que é Zig?</li>
+<li>"Olá, pessoas!" em Zig</li>
+<li>Por que Zig me interessou?</li>
+<li>Ziggy Pydust</li>
+<li>Referências</li>
+</ol>
+<h2>O que é Zig?</h2>
+<p>Da <a href="https://ziglang.org/">documentação</a>, Zig é:</p>
+<blockquote>
+<p>uma linguagem de programação de proposito geral e um conjunto de ferramentas
+para manter software robusto, otimizado e reutilizável.</p>
+</blockquote>
+<p>Na prática, isso quer dizer que Zig não é só uma linguagem. Vamos explorar isso
+mais pra frente. Antes, vamos ver a cara da linguagem.</p>
+<h2>"Olá, pessoas!" em Zig</h2>
+<p>A seguir, vamos ver um dos "Hello, world!" mais feios da história. Esta preparado?</p>
+<p>```zig
+const std = @import("std");</p>
+<p>pub fn main() !void {
+    try std.fs.File.stdout().writeAll("Olá, Pessoas!\n");
+}
+```</p>
+<p>Quanta coisa, eu só queria dizer "oi"...</p>
+<h3>Compilando</h3>
+<p><code>shell
+$ zig build-exe hello.zig
+$ ./hello
+Olá, pessoas!</code></p>
+<h2>"Olá, pessoas!" em... C?</h2>
+<p>```c</p>
+<h1>include <stdio.h></h1>
+<p>int main() {
+    puts("Salve, simpatia!");
+    return 0;
+}
+```</p>
+<p>Sim! E nós podemos compilar isso com Zig!!</p>
+<h3>Compilando</h3>
+<p><code>shell
+$ zig build-exe hello.c -lc
+$ ./hello
+Olá, pessoas!</code></p>
+<p>Nesse caso, tivemos que passar a flag <code>-lc</code> para dizer ao Zig para usar a libc (estamos utilizando o módulo <code>stdio</code> da libc.</p>
+<h3>Como o Zig consegue compilar a própria linguagem e também C?</h3>
+<p>Isso acontece porque o binário de Zig contém o clang (isso deve mudar versões futuras). E tão interessante quanto é que Zig consegue fazer <em>cross-compiling</em>, isto é, compilar o código com arquiteturas e sistemas operacionais alvo diferentes da que o compilador está rodando.</p>
+<p>Seguindo o exemplo inicial, nós podemos rodar:</p>
+<p><code>shell
+$ zig build-exe hello.zig -target aarch64-macos</code></p>
+<p>Vamos analisar o binário gerado:</p>
+<p><code>shell
+$ file hello
+hello: Mach-O 64-bit arm64 executable, flags:&lt;NOUNDEFS|DYLDLINK|TWOLEVEL|NO_REEXPORTED_DYLIBS|PIE|HAS_TLV_DESCRIPTORS&gt;</code></p>
+<p>Olha que incrível!! Geramos um binário que vai rodar na linha M da apple mesmo eu usando GNU/Linux e um Ryzen 5.</p>
+<h1>Por que Zig me interessou?</h1>
+<p>Eu gosto muito da linguagem Python, não só pelas features, mas pela comunidade e filosofia também. E nesse quesito, eu vejo que Python e Zig combinam bastante. Em ambas, a fundação mantenedora se preocupa com a qualidade do projeto em si, mas também com as pessoas que o usam. Exemplo: Zig mudando para o <a href="https://codeberg.org/ziglang">codeberg</a>, Python rejeitando dinheiro do governo dos EUA para poder continuar apoiando projetos de inclusão e diversidade.</p>
+<p>Mas como podemos programar usando Python e Zig nos nossos projetos?</p>
+<h1>Ziggy Pydust</h1>
+<h1>Referências</h1>
+<ol>
+<li>Site oficial do <a href="https://ziglang.org/">Zig</a> com documentações, notícias, etc.</li>
+<li><a href="https://pedropark99.github.io/zig-book/">Introduction to Zig</a> - Livro brasileiro (mas em inglês) sobre Zig</li>
+<li>Documentação do <a href="https://pydust.fulcrum.so/latest/">Ziggy Pydust</a></li>
+</ol>
 
     </div>
     </main>
