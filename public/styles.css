@@ -1,5 +1,13 @@
 .content-container {
     justify-content: center;
     min-height: 80vh;
+    max-width: 60vw;
     text-align: center;
   }
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}

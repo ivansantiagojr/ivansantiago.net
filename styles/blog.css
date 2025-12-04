@@ -1,4 +1,10 @@
 .content-container {
     align-items: center;
-    min-height: 80vh;
-  }
+    max-height: 80vh;
+    max-width: 60vw;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
