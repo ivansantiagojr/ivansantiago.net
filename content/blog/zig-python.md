@@ -95,6 +95,11 @@ Mas como podemos programar usando Python e Zig nos nossos projetos?
 
 # Ziggy Pydust
 
+O Ziggy Pydust é um framework desenvolvido pela SpiralDB para escrever extensões Python em Zig. E já vem com algumas coisas bem legais como:
+
+* Integração com Pyproject
+* Plugin Pytest que roda os testes Python e Zig
+
 
 # Referências
 1. Site oficial do [Zig](https://ziglang.org/) com documentações, notícias, etc.
