@@ -198,7 +198,7 @@ build-backend<span style="color: #BBB"> </span><span style="color: #666">=</span
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code>poetry<span style="color: #BBB"> </span>add<span style="color: #BBB"> </span>-G<span style="color: #BBB"> </span>dev<span style="color: #BBB"> </span>pytest
 </code></pre></div>
 <p>E podemos escrever nosso test em <code>tests/test_ola.py</code>:</p>
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code><span style="color: #008000; font-weight: bold">from</span><span style="color: #BBB"> </span><span style="color: #00F; font-weight: bold">fastfibo</span><span style="color: #BBB"> </span><span style="color: #008000; font-weight: bold">import</span> ola
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code><span style="color: #008000; font-weight: bold">from</span><span style="color: #BBB"> </span><span style="color: #00F; font-weight: bold">fastfibo.ola</span><span style="color: #BBB"> </span><span style="color: #008000; font-weight: bold">import</span> ola
 
 <span style="color: #008000; font-weight: bold">def</span><span style="color: #BBB"> </span><span style="color: #00F">test_ola</span>()
     <span style="color: #008000; font-weight: bold">assert</span> ola() <span style="color: #666">==</span> <span style="color: #BA2121">&quot;Olá, pessoas!&quot;</span>
@@ -224,7 +224,7 @@ build-backend<span style="color: #BBB"> </span><span style="color: #666">=</span
 <span style="color: #BBB">    </span>});
 
 <span style="color: #BBB">    </span>_<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span>pydust.addPythonModule(.{
-<span style="color: #BBB">        </span>.name<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span><span style="color: #BA2121">&quot;fastfibo&quot;</span>,
+<span style="color: #BBB">        </span>.name<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span><span style="color: #BA2121">&quot;fastfibo.ola&quot;</span>,
 <span style="color: #BBB">        </span>.root_source_file<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span>b.path(<span style="color: #BA2121">&quot;src/ola.zig&quot;</span>),
 <span style="color: #BBB">        </span>.limited_api<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span><span style="color: #008000; font-weight: bold">true</span>,
 <span style="color: #BBB">        </span>.target<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span>target,
@@ -238,7 +238,7 @@ build-backend<span style="color: #BBB"> </span><span style="color: #666">=</span
 </code></pre></div>
 <p>E, se tudo deu certo nossos testes passaram!!!</p>
 <p>Mas, caso você queira algo mais visual, você pode rodar o shell do Python de dentro do ambiente virtual, e rodar:</p>
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code><span style="color: #666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">from</span><span style="color: #BBB"> </span><span style="color: #00F; font-weight: bold">fastfibo</span><span style="color: #BBB"> </span><span style="color: #008000; font-weight: bold">import</span> ola
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code><span style="color: #666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">from</span><span style="color: #BBB"> </span><span style="color: #00F; font-weight: bold">fastfibo.ola</span><span style="color: #BBB"> </span><span style="color: #008000; font-weight: bold">import</span> ola
 <span style="color: #666">&gt;&gt;&gt;</span> ola()
 <span style="color: #BA2121">&#39;Olá, pessoas!&#39;</span>
 </code></pre></div>

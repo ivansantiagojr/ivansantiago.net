@@ -249,7 +249,7 @@ poetry add -G dev pytest
 E podemos escrever nosso test em `tests/test_ola.py`:
 
 ```python
-from fastfibo import ola
+from fastfibo.ola import ola
 
 def test_ola()
     assert ola() == "Olá, pessoas!"
@@ -280,7 +280,7 @@ pub fn build(b: *std.Build) void {
     });
 
     _ = pydust.addPythonModule(.{
-        .name = "fastfibo",
+        .name = "fastfibo.ola",
         .root_source_file = b.path("src/ola.zig"),
         .limited_api = true,
         .target = target,
@@ -302,7 +302,7 @@ E, se tudo deu certo nossos testes passaram!!!
 Mas, caso você queira algo mais visual, você pode rodar o shell do Python de dentro do ambiente virtual, e rodar:
 
 ```python
->>> from fastfibo import ola
+>>> from fastfibo.ola import ola
 >>> ola()
 'Olá, pessoas!'
 ```
