@@ -110,7 +110,7 @@ Neste exemplo, vamos construir uma biblioteca `fastfibo`, baseada na excelente [
 Vamos criar o nosso projeto usando [poetry](https://python-poetry.org/):
 
 ```sh
-poetry new fastfibo
+poetry new fastfibo --flat
 ```
 
 E logo de cara, eu vou editar o campo `requires-python` no `pyproject.toml` para

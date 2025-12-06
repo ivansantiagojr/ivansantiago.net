@@ -90,7 +90,7 @@ hello:<span style="color: #BBB"> </span>Mach-O<span style="color: #BBB"> </span>
 <h2>Iniciando um projeto Ziggy Pydust</h2>
 <p>Neste exemplo, vamos construir uma biblioteca <code>fastfibo</code>, baseada na excelente <a href="https://www.youtube.com/watch?v=wfjJWf-jebI">live de Cython</a> do nosso amigo da comunidade Python <a href="dunossauro.com">dunossauro</a>.</p>
 <p>Vamos criar o nosso projeto usando <a href="https://python-poetry.org/">poetry</a>:</p>
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code>poetry<span style="color: #BBB"> </span>new<span style="color: #BBB"> </span>fastfibo
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code>poetry<span style="color: #BBB"> </span>new<span style="color: #BBB"> </span>fastfibo<span style="color: #BBB"> </span>--flat
 </code></pre></div>
 <p>E logo de cara, eu vou editar o campo <code>requires-python</code> no <code>pyproject.toml</code> para</p>
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code>requires-python<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span><span style="color: #BA2121">&quot;&gt;=3.13,&lt;3.14&quot;</span>
