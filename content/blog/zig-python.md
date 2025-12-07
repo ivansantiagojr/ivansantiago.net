@@ -43,7 +43,7 @@ Quanta coisa, eu só queria dizer "oi"...
 
 ## Compilando
 
-```shell
+```sh
 $ zig build-exe hello.zig
 $ ./hello
 Olá, pessoas!
@@ -64,7 +64,7 @@ Sim! E nós podemos compilar isso com Zig!!
 
 ### Compilando
 
-```shell
+```sh
 $ zig build-exe hello.c -lc
 $ ./hello
 Olá, pessoas!
@@ -78,13 +78,13 @@ Isso acontece porque o binário de Zig contém o clang (isso deve mudar versões
 
 Seguindo o exemplo inicial, nós podemos rodar:
 
-```shell
+```sh
 $ zig build-exe hello.zig -target aarch64-macos
 ```
 
 Vamos analisar o binário gerado:
 
-```shell
+```sh
 $ file hello
 hello: Mach-O 64-bit arm64 executable, flags:<NOUNDEFS|DYLDLINK|TWOLEVEL|NO_REEXPORTED_DYLIBS|PIE|HAS_TLV_DESCRIPTORS>
 ```
