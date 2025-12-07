@@ -1,11 +1,9 @@
-{% extends "base.html" %} 
+{% extends "blog/base.html" %} 
 
 {% block head %}
     <title>{{ page.title }}</title>
 {% endblock head %} 
 
 {% block content %}
-    <div class="content-container">
-        {{ page.content }}
-    </div>
+    {{ page.content }}
 {% endblock content %}

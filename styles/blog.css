@@ -1,0 +1,10 @@
+.content-container {
+    align-items: center;
+    max-height: 80vh;
+    max-width: 60vw;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
