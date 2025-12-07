@@ -14,7 +14,8 @@ template = 'blog/article.html'
 
 # Premissas
 - Eu não entrarei em detalhes sobre Python ou Zig nesse artigo, só irei mostrar como unir os dois. Caso precise se aprofundar, consulte as referências no final da página.
-- Não estamos usando a versão mais atual do Ziggy Pydust por conta de um erro.
+- Não estamos usando a versão mais atual do Ziggy Pydust por conta de um erro ainda sem solução.
+- Eu só consegui fazer o projeto funcionar
 
 # O que é Zig?
 
@@ -94,6 +95,8 @@ Olha que incrível!! Geramos um binário que vai rodar na linha M da apple mesmo
 
 Eu gosto muito da linguagem Python, não só pelas features, mas pela comunidade e filosofia também. E nesse quesito, eu vejo que Python e Zig combinam bastante. Em ambas, a fundação mantenedora se preocupa com a qualidade do projeto em si, mas também com as pessoas que o usam. Exemplo: Zig mudando para o [codeberg](https://codeberg.org/ziglang), Python rejeitando dinheiro do governo dos EUA para poder continuar apoiando projetos de inclusão e diversidade.
 
+Eu pretendo expandir esse assunto em um artigo futuro.
+
 Mas como podemos programar usando Python e Zig nos nossos projetos?
 
 # Ziggy Pydust
@@ -106,6 +109,8 @@ O Ziggy Pydust é um framework desenvolvido pela SpiralDB para escrever extensõ
 ## Iniciando um projeto Ziggy Pydust
 
 Neste exemplo, vamos construir uma biblioteca `fastfibo`, baseada na excelente [live de Cython](https://www.youtube.com/watch?v=wfjJWf-jebI) do nosso amigo da comunidade Python [dunossauro](dunossauro.com).
+
+Nossa biblioteca terá um função que recebe uma posição e cálcula o número de sequência de [Fibonacci](https://pt.wikipedia.org/wiki/Sequ%C3%AAncia_de_Fibonacci) daquela posição. Vamos aprender mais na implementação.
 
 Vamos criar o nosso projeto usando [poetry](https://python-poetry.org/):
 
@@ -212,9 +217,6 @@ build-backend = "poetry.core.masonry.api"
 ```
 
 Ufa..., setup feito. Agora vamos escrever o nosso primeiro módulo em Zig!
-
-
-
 
 ### "Olá, pessoas!" em Zig, mas para o Python
 
@@ -345,6 +347,119 @@ test "fibonacci iterative" {
     try testing.expectEqual(@as(u64, 34), fibo(.{ .n = 9 }));
 }
 ```
+Legal, agora temos nossa implementação de fibonacci em Zig com um teste.
+
+Vamos rodar os testes Python para essa função?
+
+Em `tests/test_fibo.py`, escreva:
+
+```python
+from fastfibo.fibo import fibo
+
+
+def test_fibo():
+    result = fibo(3)
+    expected_result = 2
+
+    assert result == expected_result
+```
+
+Se tudo estiver correto, nós devemos ver os dois testes passando quando rodamos `pytest -vv` de dentro do ambiente virtual:
+```sh
+===================================================== test session starts =====================================================
+platform linux -- Python 3.13.7, pytest-9.0.1, pluggy-1.6.0 -- /home/ivan/.cache/pypoetry/virtualenvs/fastfibo--uLR87XE-py3.13/bin/python
+cachedir: .pytest_cache
+rootdir: /home/ivan/Documents/fastfibo
+configfile: pyproject.toml
+plugins: ziggy-pydust-0.25.1
+collected 2 items
+
+tests/test_fibo.py::test_fibo PASSED                                                                                    [ 50%]
+tests/test_ola.py::test_ola PASSED                                                                                      [100%]
+
+====================================================== 2 passed in 0.30s ======================================================
+```
+
+## Ok, mas por que usar Ziggy Pydust?
+
+Existem alguns motivos para desenvolver um módulo Python em outra linguagem. Você pode estar buscando usar algo que o Python só entrega pela ABI C, você pode querer fazer uso do ecossistema específico de outra linguagem ou buscar um ganho de performance significativo. 
+
+No caso trabalho nesse texto, o ganho de performance é o ponto chave para usar Ziggy Pydust, para isso, vamos fazer uma comparação rápida entre uma implementação de da função para calcular a sequência de Fibonacci em Python puro e a que fizemos agora em Zig.
+
+Para isso, nós escrevemos uma simples implementação da função para calcular Fibonacci em Python puro.
+
+Crie o arquivo `fastfibo/fib.py` com o seguinte conteúdo:
+
+```python
+def fib(n: int):
+    a = 0
+    b = 1
+
+    for i in range(n):
+        a, b = a + b, a
+
+    return a
+```
+
+E um arquivo chamado `run.py`, que é o que vai calcular a diferença de performance entre as duas funções:
+
+```python
+from timeit import timeit
+
+py = timeit("fib(93)", number=1_000_000, setup='from fastfibo.fib import fib')
+zig = timeit("fibo(93)", number=1_000_000, setup="from fastfibo.fibo import fibo")
+
+print("Python puro", py)
+print("Ziggy Pydust", zig)
+
+print(f"{py/zig=}")
+```
+
+O código acima:
+
+1. Conta o tempo que levou para executar a função fib (em Python) com o parâmetro `93` um milhão de vezes.
+2. Conta o tempo que levou para executar a função fibo (em Zig) com o parâmetro `93` um milhão de vezes.
+3. Calcula quantas vezes o a implementação em Zig é mais rápida.
+
+Os resultados na minha máquina mostram que a implementação em Zig pode ser 7 vezes mais rápida do que a em Python puro:
+
+```
+Python puro 2.0440780429998995
+Ziggy Pydust 0.2800135359975684
+py/zig=7.299925825791686
+```
+
+Esses resultados mostram que somente por escrever a extensão em Zig, já tivemos um ganho de performance bem significativo em relação a implementação em Python.
+
+## Vale a pena usar o Ziggy Pydust?
+
+Mais cedo eu pontuei que escrever extensões Python vale a pena em alguns casos. Vamos analisar se Zig e Ziggy pydust se encaixa nesses casos?
+
+1. Fazer proveito do ecossistema de outra linguagem
+
+    Zig ainda não é uma linguagem com um ecossistema tão grande, a linguagem é jovem, mantida por uma fundação sem fins lucrativos. Nesse quesito, C/C++, Cython, Rust serão opções muito melhores.
+
+2. Ter ganhos de performance significativos
+    
+    Na live do dunossauro que eu citei anteriormente, os resultados mostrados são bem diferentes. Apesar de esses números não serem considerados benchmarks reais, existem muitas variáveis nos ambiente, etc. Entretanto, usar C ou Cython mostrou ganhos de performance muito maiores. Veja os resultados das comparações entre PYthon, Cython e C do Dunossauro (rodando na mesma máquina da comparação entre Python e Zig:
+
+```
+Python Puro 2.8343024810019415
+Cython/Python 0.06522368900186848
+Cython Puro 0.05452507299196441
+C Puro 0.055832105994340964
+py/cy=43.45510847938617
+py/px=51.98163570399337
+py/cc=50.76474244566775
+cy/cc=1.1682111545009501
+px/cc=0.9765899390843499
+```
+
+## Conclusão
+
+C e Cython (e provavelmente Rust com [PyO3](https://pyo3.rs)) oferecem maiores ganhos de performance e e, certamente, um ecossistema maior e mais desenvolvido do que Zig com Ziggy Pydust. Mas isso não é demérito algum. Zig é uma linguagem altamente instável, as coisas quebram constantemente, e o Ziggy Pydust é novo, com comunidade pequena. Tudo isso torna mais difícil fazer otimizações para os ganhos de performance serem ainda mais impressionantes.
+
+Por isso, eu diria para avaliar bem se você deve usar Ziggy Pydust no seu trabalho ou projeto importante. E se você é um entusiasta Zig e Python, vamos conversar e tentar construir algo para unir as vantagens das duas linguagens de forma interessante!
 
 # Referências
 
