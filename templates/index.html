@@ -1,11 +1,14 @@
 {% extends "base.html" %} 
 
 {% block head %}
+    <link rel="stylesheet" href="/home.css">
     <title>{{ page.title }}</title>
 {% endblock head %} 
 
 {% block content %}
+    <main class="container">
     <div class="content-container">
         {{ page.content }}
     </div>
+    </main>
 {% endblock content %}

@@ -12,9 +12,12 @@
     {% block head %}{% endblock head %}
   </head>
   <body>
-    <main class="container">
+      <nav class="top-bar">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/blog">Blog</a></li>
+        </ul>
+      </nav>
         {% block content %}{% endblock content %}
-    </div>
-    </main>
   </body>
 </html>

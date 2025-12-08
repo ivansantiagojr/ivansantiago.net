@@ -1,9 +1,14 @@
-{% extends "blog/base.html" %} 
+{% extends "base.html" %} 
 
 {% block head %}
+    <link rel="stylesheet" href="/blog.css">
     <title>{{ page.title }}</title>
 {% endblock head %} 
 
 {% block content %}
-    {{ page.content }}
+    <main class="container">
+        <div class="content-container">
+            {{ page.content }}
+        </div>
+    </main>
 {% endblock content %}
