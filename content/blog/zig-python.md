@@ -21,7 +21,7 @@ template = 'blog/article.html'
 
 Da [documentação](https://ziglang.org/), Zig é:
 
-> uma linguagem de programação de proposito geral e um conjunto de ferramentas
+> uma linguagem de programação de propósito geral e um conjunto de ferramentas
 > para manter software robusto, otimizado e reutilizável.
 
 Na prática, isso quer dizer que Zig não é só uma linguagem. Vamos explorar isso
@@ -74,7 +74,7 @@ Nesse caso, tivemos que passar a flag `-lc` para dizer ao Zig para usar a libc (
 
 ### Como o Zig consegue compilar a própria linguagem e também C?
 
-Isso acontece porque o binário de Zig contém o clang (isso deve mudar versões futuras). E tão interessante quanto é que Zig consegue fazer _cross-compiling_, isto é, compilar o código com arquiteturas e sistemas operacionais alvo diferentes da que o compilador está rodando.
+Isso acontece porque o binário de Zig contém o clang (isso deve mudar em versões futuras). E tão interessante quanto, é que Zig consegue fazer _cross-compiling_, isto é, compilar o código com arquiteturas e sistemas operacionais alvo diferentes da que o compilador está rodando.
 
 Seguindo o exemplo inicial, nós podemos rodar:
 
@@ -110,7 +110,7 @@ O Ziggy Pydust é um framework desenvolvido pela SpiralDB para escrever extensõ
 
 Neste exemplo, vamos construir uma biblioteca `fastfibo`, baseada na excelente [live de Cython](https://www.youtube.com/watch?v=wfjJWf-jebI) do nosso amigo da comunidade Python [dunossauro](dunossauro.com).
 
-Nossa biblioteca terá um função que recebe uma posição e cálcula o número de sequência de [Fibonacci](https://pt.wikipedia.org/wiki/Sequ%C3%AAncia_de_Fibonacci) daquela posição. Vamos aprender mais na implementação.
+Nossa biblioteca terá um função que recebe uma posição e calcula o número de sequência de [Fibonacci](https://pt.wikipedia.org/wiki/Sequ%C3%AAncia_de_Fibonacci) daquela posição. Vamos aprender mais na implementação.
 
 Vamos criar o nosso projeto usando [poetry](https://python-poetry.org/):
 
@@ -124,7 +124,7 @@ E logo de cara, eu vou editar o campo `requires-python` no `pyproject.toml` para
 requires-python = ">=3.13,<3.14"
 ```
 
-Isso vai nos permitir adicionar o `Ziggy Pydust` como uma dependencia de desenvolvimento.
+Isso vai nos permitir adicionar o `Ziggy Pydust` como uma dependência de desenvolvimento.
 
 
 ```sh
@@ -349,6 +349,51 @@ test "fibonacci iterative" {
 ```
 Legal, agora temos nossa implementação de fibonacci em Zig com um teste.
 
+Só falta adicionar esse módulo no nosso arquivo de build com:
+
+```zig
+    _ = pydust.addPythonModule(.{
+        .name = "fastfibo.fibo",
+        .root_source_file = b.path("src/fibo.zig"),
+        .limited_api = true,
+        .target = target,
+        .optimize = optimize,
+    });
+```
+
+> O arquivo `build.zig` completo fica assim:
+```zig
+const std = @import("std");
+const py = @import("./pydust.build.zig");
+
+pub fn build(b: *std.Build) void {
+    const target = b.standardTargetOptionsQueryOnly(.{});
+    const optimize = b.standardOptimizeOption(.{});
+
+    const test_step = b.step("test", "Run library tests");
+
+    const pydust = py.addPydust(b, .{
+        .test_step = test_step,
+    });
+
+    _ = pydust.addPythonModule(.{
+        .name = "fastfibo.ola",
+        .root_source_file = b.path("src/ola.zig"),
+        .limited_api = true,
+        .target = target,
+        .optimize = optimize,
+    });
+
+    _ = pydust.addPythonModule(.{
+        .name = "fastfibo.fibo",
+        .root_source_file = b.path("src/fibo.zig"),
+        .limited_api = true,
+        .target = target,
+        .optimize = optimize,
+    });
+}
+```
+
 Vamos rodar os testes Python para essa função?
 
 Em `tests/test_fibo.py`, escreva:
@@ -366,18 +411,17 @@ def test_fibo():
 
 Se tudo estiver correto, nós devemos ver os dois testes passando quando rodamos `pytest -vv` de dentro do ambiente virtual:
 ```sh
-===================================================== test session starts =====================================================
-platform linux -- Python 3.13.7, pytest-9.0.1, pluggy-1.6.0 -- /home/ivan/.cache/pypoetry/virtualenvs/fastfibo--uLR87XE-py3.13/bin/python
-cachedir: .pytest_cache
+===================== test session starts =====================
+platform linux -- Python 3.13.7, pytest-9.0.1, pluggy-1.6.0
 rootdir: /home/ivan/Documents/fastfibo
 configfile: pyproject.toml
 plugins: ziggy-pydust-0.25.1
 collected 2 items
 
-tests/test_fibo.py::test_fibo PASSED                                                                                    [ 50%]
-tests/test_ola.py::test_ola PASSED                                                                                      [100%]
+tests/test_fibo.py .                                    [ 50%]
+tests/test_ola.py .                                     [100%]
 
-====================================================== 2 passed in 0.30s ======================================================
+====================== 2 passed in 0.31s ======================
 ```
 
 ## Ok, mas por que usar Ziggy Pydust?
