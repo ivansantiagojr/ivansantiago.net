@@ -20,15 +20,15 @@ template = 'blog/article.html'
 
 Da [documentação](https://ziglang.org/), Zig é:
 
-> uma linguagem de programação de propósito geral e um conjunto de ferramentas
+> Uma linguagem de programação de propósito geral e um conjunto de ferramentas
 > para manter software robusto, otimizado e reutilizável.
 
 Na prática, isso quer dizer que Zig não é só uma linguagem. Vamos explorar isso
-mais pra frente. Antes, vamos ver a cara da linguagem.
+mais para frente. Antes, vamos ver a cara da linguagem.
 
 # "Olá, pessoas!" em Zig
 
-A seguir, vamos ver um dos "Hello, world!" mais feios da história. Esta preparado?
+A seguir, vamos ver um dos "Hello, world!" mais feios da história. Está preparado?
 
 ```zig
 const std = @import("std");
@@ -88,11 +88,11 @@ $ file hello
 hello: Mach-O 64-bit arm64 executable, flags:<NOUNDEFS|DYLDLINK|TWOLEVEL|NO_REEXPORTED_DYLIBS|PIE|HAS_TLV_DESCRIPTORS>
 ```
 
-Olha que incrível!! Geramos um binário que vai rodar na linha M da apple mesmo eu usando GNU/Linux e um Ryzen 5.
+Olha que incrível!! Geramos um binário que vai rodar na linha M da Apple, mesmo eu usando GNU/Linux e um Ryzen 5.
 
 # Por que Zig me interessou?
 
-Eu gosto muito da linguagem Python, não só pelas features, mas pela comunidade e filosofia também. E nesse quesito, eu vejo que Python e Zig combinam bastante. Em ambas, a fundação mantenedora se preocupa com a qualidade do projeto em si, mas também com as pessoas que o usam. Exemplo: Zig mudando para o [codeberg](https://codeberg.org/ziglang), Python rejeitando dinheiro do governo dos EUA para poder continuar apoiando projetos de inclusão e diversidade.
+Eu gosto muito da linguagem Python, não só pelas features, mas pela comunidade e filosofia também. E nesse quesito, eu vejo que Python e Zig combinam bastante. Em ambas, a fundação mantenedora se preocupa com a qualidade do projeto em si, mas também com as pessoas que o usam. Exemplo: Zig mudando para o [Codeberg](https://codeberg.org/ziglang), Python rejeitando dinheiro do governo dos EUA para poder continuar apoiando projetos de inclusão e diversidade.
 
 Eu pretendo expandir esse assunto em um artigo futuro.
 
@@ -137,7 +137,8 @@ O Ziggy Pydust é uma dependencia de desenvolvimento pois a biblioteca final nã
 
 Para o Ziggy Pydust saber como fazer a build do nosso projeto, vamos ter que fazer algumas configurações.
 
-Antes, vamos criar um script de build especial na raiz do nosso projeto (mesma altura do arquivo `pyproject.toml`). Escreva o seguinte conteúdo num arquivo chamado `build.py`
+Antes, vamos criar um script de build especial na raiz do nosso projeto (mesma altura do arquivo `pyproject.toml`). Escreva o seguinte conteúdo num arquivo chamado `build.py`:
+
 ```python
 from pydust.build import build
 

@@ -41,13 +41,13 @@
 <h1>O que é Zig?</h1>
 <p>Da <a href="https://ziglang.org/">documentação</a>, Zig é:</p>
 <blockquote>
-<p>uma linguagem de programação de propósito geral e um conjunto de ferramentas
+<p>Uma linguagem de programação de propósito geral e um conjunto de ferramentas
 para manter software robusto, otimizado e reutilizável.</p>
 </blockquote>
 <p>Na prática, isso quer dizer que Zig não é só uma linguagem. Vamos explorar isso
-mais pra frente. Antes, vamos ver a cara da linguagem.</p>
+mais para frente. Antes, vamos ver a cara da linguagem.</p>
 <h1>"Olá, pessoas!" em Zig</h1>
-<p>A seguir, vamos ver um dos "Hello, world!" mais feios da história. Esta preparado?</p>
+<p>A seguir, vamos ver um dos "Hello, world!" mais feios da história. Está preparado?</p>
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code><span style="color: #008000; font-weight: bold">const</span><span style="color: #BBB"> </span>std<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span><span style="color: #008000">@import</span>(<span style="color: #BA2121">&quot;std&quot;</span>);
 
 <span style="color: #008000; font-weight: bold">pub</span><span style="color: #BBB"> </span><span style="color: #008000; font-weight: bold">fn</span><span style="color: #BBB"> </span>main()<span style="color: #BBB"> </span><span style="color: #666">!</span><span style="color: #B00040">void</span><span style="color: #BBB"> </span>{
@@ -84,9 +84,9 @@ Olá,<span style="color: #BBB"> </span>pessoas!
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code>$<span style="color: #BBB"> </span>file<span style="color: #BBB"> </span>hello
 hello:<span style="color: #BBB"> </span>Mach-O<span style="color: #BBB"> </span><span style="color: #666">64</span>-bit<span style="color: #BBB"> </span>arm64<span style="color: #BBB"> </span>executable,<span style="color: #BBB"> </span>flags:&lt;NOUNDEFS|DYLDLINK|TWOLEVEL|NO_REEXPORTED_DYLIBS|PIE|HAS_TLV_DESCRIPTORS&gt;
 </code></pre></div>
-<p>Olha que incrível!! Geramos um binário que vai rodar na linha M da apple mesmo eu usando GNU/Linux e um Ryzen 5.</p>
+<p>Olha que incrível!! Geramos um binário que vai rodar na linha M da Apple, mesmo eu usando GNU/Linux e um Ryzen 5.</p>
 <h1>Por que Zig me interessou?</h1>
-<p>Eu gosto muito da linguagem Python, não só pelas features, mas pela comunidade e filosofia também. E nesse quesito, eu vejo que Python e Zig combinam bastante. Em ambas, a fundação mantenedora se preocupa com a qualidade do projeto em si, mas também com as pessoas que o usam. Exemplo: Zig mudando para o <a href="https://codeberg.org/ziglang">codeberg</a>, Python rejeitando dinheiro do governo dos EUA para poder continuar apoiando projetos de inclusão e diversidade.</p>
+<p>Eu gosto muito da linguagem Python, não só pelas features, mas pela comunidade e filosofia também. E nesse quesito, eu vejo que Python e Zig combinam bastante. Em ambas, a fundação mantenedora se preocupa com a qualidade do projeto em si, mas também com as pessoas que o usam. Exemplo: Zig mudando para o <a href="https://codeberg.org/ziglang">Codeberg</a>, Python rejeitando dinheiro do governo dos EUA para poder continuar apoiando projetos de inclusão e diversidade.</p>
 <p>Eu pretendo expandir esse assunto em um artigo futuro.</p>
 <p>Mas como podemos programar usando Python e Zig nos nossos projetos?</p>
 <h1>Ziggy Pydust</h1>
@@ -110,11 +110,11 @@ hello:<span style="color: #BBB"> </span>Mach-O<span style="color: #BBB"> </span>
 <p>O Ziggy Pydust é uma dependencia de desenvolvimento pois a biblioteca final não depende de nada que o Ziggy Pydust contém, a compilação será nativa. Vamos continuar desenvolvendo o projeto para entender.</p>
 <h2>Configurando o Ziggy Pydust</h2>
 <p>Para o Ziggy Pydust saber como fazer a build do nosso projeto, vamos ter que fazer algumas configurações.</p>
-<p>Antes, vamos criar um script de build especial na raiz do nosso projeto (mesma altura do arquivo <code>pyproject.toml</code>). Escreva o seguinte conteúdo num arquivo chamado <code>build.py</code>
+<p>Antes, vamos criar um script de build especial na raiz do nosso projeto (mesma altura do arquivo <code>pyproject.toml</code>). Escreva o seguinte conteúdo num arquivo chamado <code>build.py</code>:</p>
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code><span style="color: #008000; font-weight: bold">from</span><span style="color: #BBB"> </span><span style="color: #00F; font-weight: bold">pydust.build</span><span style="color: #BBB"> </span><span style="color: #008000; font-weight: bold">import</span> build
 
 build()
-</code></pre></div></p>
+</code></pre></div>
 <p>E, em seguida, vamos alterar o <code>pyproject.toml</code> com as configurações relacionadas ao Ziggy Pydust.
 As alterações serão:</p>
 <ol>
