@@ -15,5 +15,5 @@ Também tenho experiência trabalhando com datacenters e VMware. O tempo que tra
 
 Escrever é uma atividade que me interessa bastante, por isso, te convido a acompanhar meu [blog](/blog).
 
-Além disso, eu mantenho alguns projetos open-source bem interessantes como o [donotcommit.com](https://donotcommit.com).
+Além disso, eu mantenho alguns projetos open-source bem interessantes como o <a href="https://donotcommit.com" target="_blank">donotcommit.com</a>
 
