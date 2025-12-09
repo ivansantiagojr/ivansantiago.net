@@ -69,7 +69,7 @@ $ ./hello
 Olá, pessoas!
 ```
 
-Nesse caso, tivemos que passar a flag `-lc` para dizer ao Zig para usar a libc (estamos utilizando o módulo `stdio` da libc.
+Nesse caso, tivemos que passar a flag `-lc` para dizer ao Zig para usar a libc (estamos utilizando o módulo `stdio` da libc).
 
 ### Como o Zig consegue compilar a própria linguagem e também C?
 
