@@ -37,7 +37,6 @@
 <ul>
 <li>Eu não entrarei em detalhes sobre Python ou Zig nesse artigo, só irei mostrar como unir os dois. Caso precise se aprofundar, consulte as referências no final da página.</li>
 <li>Não estamos usando a versão mais atual do Ziggy Pydust por conta de um erro ainda sem solução.</li>
-<li>Eu só consegui fazer o projeto funcionar</li>
 </ul>
 <h1>O que é Zig?</h1>
 <p>Da <a href="https://ziglang.org/">documentação</a>, Zig é:</p>
@@ -65,7 +64,7 @@ Olá,<span style="color: #BBB"> </span>pessoas!
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code><span style="color: #9C6500">#include</span><span style="color: #BBB"> </span><span style="color: #3D7B7B; font-style: italic">&lt;stdio.h&gt;</span>
 
 <span style="color: #B00040">int</span><span style="color: #BBB"> </span><span style="color: #00F">main</span>()<span style="color: #BBB"> </span>{
-<span style="color: #BBB">    </span>puts(<span style="color: #BA2121">&quot;Salve, simpatia!&quot;</span>);
+<span style="color: #BBB">    </span>puts(<span style="color: #BA2121">&quot;Olá, Pessoas!&quot;</span>);
 <span style="color: #BBB">    </span><span style="color: #008000; font-weight: bold">return</span><span style="color: #BBB"> </span><span style="color: #666">0</span>;
 }
 </code></pre></div>
@@ -210,7 +209,7 @@ build-backend<span style="color: #BBB"> </span><span style="color: #666">=</span
 <p>E podemos escrever nosso test em <code>tests/test_ola.py</code>:</p>
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code><span style="color: #008000; font-weight: bold">from</span><span style="color: #BBB"> </span><span style="color: #00F; font-weight: bold">fastfibo.ola</span><span style="color: #BBB"> </span><span style="color: #008000; font-weight: bold">import</span> ola
 
-<span style="color: #008000; font-weight: bold">def</span><span style="color: #BBB"> </span><span style="color: #00F">test_ola</span>()
+<span style="color: #008000; font-weight: bold">def</span><span style="color: #BBB"> </span><span style="color: #00F">test_ola</span>():
     <span style="color: #008000; font-weight: bold">assert</span> ola() <span style="color: #666">==</span> <span style="color: #BA2121">&quot;Olá, pessoas!&quot;</span>
 </code></pre></div>
 <p>Maaas, antes de rodar o test, precisamos dizer para o Zig como compilar tudo isso. Para isso, vamos aprender sobre scripts de build.</p>

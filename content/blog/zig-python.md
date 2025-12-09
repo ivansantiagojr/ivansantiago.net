@@ -15,7 +15,6 @@ template = 'blog/article.html'
 # Premissas
 - Eu não entrarei em detalhes sobre Python ou Zig nesse artigo, só irei mostrar como unir os dois. Caso precise se aprofundar, consulte as referências no final da página.
 - Não estamos usando a versão mais atual do Ziggy Pydust por conta de um erro ainda sem solução.
-- Eu só consegui fazer o projeto funcionar
 
 # O que é Zig?
 
@@ -55,7 +54,7 @@ Olá, pessoas!
 #include <stdio.h>
 
 int main() {
-    puts("Salve, simpatia!");
+    puts("Olá, Pessoas!");
     return 0;
 }
 ```
@@ -253,7 +252,7 @@ E podemos escrever nosso test em `tests/test_ola.py`:
 ```python
 from fastfibo.ola import ola
 
-def test_ola()
+def test_ola():
     assert ola() == "Olá, pessoas!"
 ```
 
