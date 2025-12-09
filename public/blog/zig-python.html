@@ -49,42 +49,42 @@ para manter software robusto, otimizado e reutilizável.</p>
 mais pra frente. Antes, vamos ver a cara da linguagem.</p>
 <h1>"Olá, pessoas!" em Zig</h1>
 <p>A seguir, vamos ver um dos "Hello, world!" mais feios da história. Esta preparado?</p>
-<p>```zig
-const std = @import("std");</p>
-<p>pub fn main() !void {
-    try std.fs.File.stdout().writeAll("Olá, Pessoas!\n");
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code><span style="color: #008000; font-weight: bold">const</span><span style="color: #BBB"> </span>std<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span><span style="color: #008000">@import</span>(<span style="color: #BA2121">&quot;std&quot;</span>);
+
+<span style="color: #008000; font-weight: bold">pub</span><span style="color: #BBB"> </span><span style="color: #008000; font-weight: bold">fn</span><span style="color: #BBB"> </span>main()<span style="color: #BBB"> </span><span style="color: #666">!</span><span style="color: #B00040">void</span><span style="color: #BBB"> </span>{
+<span style="color: #BBB">    </span><span style="color: #008000; font-weight: bold">try</span><span style="color: #BBB"> </span>std.fs.File.stdout().writeAll(<span style="color: #BA2121">&quot;Olá, Pessoas!</span><span style="color: #AA5D1F; font-weight: bold">\n</span><span style="color: #BA2121">&quot;</span>);
 }
-```</p>
+</code></pre></div>
 <p>Quanta coisa, eu só queria dizer "oi"...</p>
 <h2>Compilando</h2>
-<p><code>sh
-$ zig build-exe hello.zig
-$ ./hello
-Olá, pessoas!</code></p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code>$<span style="color: #BBB"> </span>zig<span style="color: #BBB"> </span>build-exe<span style="color: #BBB"> </span>hello.zig
+$<span style="color: #BBB"> </span>./hello
+Olá,<span style="color: #BBB"> </span>pessoas!
+</code></pre></div>
 <h2>"Olá, pessoas!" em... C?</h2>
-<p>```c</p>
-<h1>include <stdio.h></h1>
-<p>int main() {
-    puts("Salve, simpatia!");
-    return 0;
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code><span style="color: #9C6500">#include</span><span style="color: #BBB"> </span><span style="color: #3D7B7B; font-style: italic">&lt;stdio.h&gt;</span>
+
+<span style="color: #B00040">int</span><span style="color: #BBB"> </span><span style="color: #00F">main</span>()<span style="color: #BBB"> </span>{
+<span style="color: #BBB">    </span>puts(<span style="color: #BA2121">&quot;Salve, simpatia!&quot;</span>);
+<span style="color: #BBB">    </span><span style="color: #008000; font-weight: bold">return</span><span style="color: #BBB"> </span><span style="color: #666">0</span>;
 }
-```</p>
+</code></pre></div>
 <p>Sim! E nós podemos compilar isso com Zig!!</p>
 <h3>Compilando</h3>
-<p><code>sh
-$ zig build-exe hello.c -lc
-$ ./hello
-Olá, pessoas!</code></p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code>$<span style="color: #BBB"> </span>zig<span style="color: #BBB"> </span>build-exe<span style="color: #BBB"> </span>hello.c<span style="color: #BBB"> </span>-lc
+$<span style="color: #BBB"> </span>./hello
+Olá,<span style="color: #BBB"> </span>pessoas!
+</code></pre></div>
 <p>Nesse caso, tivemos que passar a flag <code>-lc</code> para dizer ao Zig para usar a libc (estamos utilizando o módulo <code>stdio</code> da libc.</p>
 <h3>Como o Zig consegue compilar a própria linguagem e também C?</h3>
 <p>Isso acontece porque o binário de Zig contém o clang (isso deve mudar em versões futuras). E tão interessante quanto, é que Zig consegue fazer <em>cross-compiling</em>, isto é, compilar o código com arquiteturas e sistemas operacionais alvo diferentes da que o compilador está rodando.</p>
 <p>Seguindo o exemplo inicial, nós podemos rodar:</p>
-<p><code>sh
-$ zig build-exe hello.zig -target aarch64-macos</code></p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code>$<span style="color: #BBB"> </span>zig<span style="color: #BBB"> </span>build-exe<span style="color: #BBB"> </span>hello.zig<span style="color: #BBB"> </span>-target<span style="color: #BBB"> </span>aarch64-macos
+</code></pre></div>
 <p>Vamos analisar o binário gerado:</p>
-<p><code>sh
-$ file hello
-hello: Mach-O 64-bit arm64 executable, flags:&lt;NOUNDEFS|DYLDLINK|TWOLEVEL|NO_REEXPORTED_DYLIBS|PIE|HAS_TLV_DESCRIPTORS&gt;</code></p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code>$<span style="color: #BBB"> </span>file<span style="color: #BBB"> </span>hello
+hello:<span style="color: #BBB"> </span>Mach-O<span style="color: #BBB"> </span><span style="color: #666">64</span>-bit<span style="color: #BBB"> </span>arm64<span style="color: #BBB"> </span>executable,<span style="color: #BBB"> </span>flags:&lt;NOUNDEFS|DYLDLINK|TWOLEVEL|NO_REEXPORTED_DYLIBS|PIE|HAS_TLV_DESCRIPTORS&gt;
+</code></pre></div>
 <p>Olha que incrível!! Geramos um binário que vai rodar na linha M da apple mesmo eu usando GNU/Linux e um Ryzen 5.</p>
 <h1>Por que Zig me interessou?</h1>
 <p>Eu gosto muito da linguagem Python, não só pelas features, mas pela comunidade e filosofia também. E nesse quesito, eu vejo que Python e Zig combinam bastante. Em ambas, a fundação mantenedora se preocupa com a qualidade do projeto em si, mas também com as pessoas que o usam. Exemplo: Zig mudando para o <a href="https://codeberg.org/ziglang">codeberg</a>, Python rejeitando dinheiro do governo dos EUA para poder continuar apoiando projetos de inclusão e diversidade.</p>
@@ -100,85 +100,89 @@ hello: Mach-O 64-bit arm64 executable, flags:&lt;NOUNDEFS|DYLDLINK|TWOLEVEL|NO_R
 <p>Neste exemplo, vamos construir uma biblioteca <code>fastfibo</code>, baseada na excelente <a href="https://www.youtube.com/watch?v=wfjJWf-jebI">live de Cython</a> do nosso amigo da comunidade Python <a href="dunossauro.com">dunossauro</a>.</p>
 <p>Nossa biblioteca terá um função que recebe uma posição e calcula o número de sequência de <a href="https://pt.wikipedia.org/wiki/Sequ%C3%AAncia_de_Fibonacci">Fibonacci</a> daquela posição. Vamos aprender mais na implementação.</p>
 <p>Vamos criar o nosso projeto usando <a href="https://python-poetry.org/">poetry</a>:</p>
-<p><code>sh
-poetry new fastfibo --flat</code></p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code>poetry<span style="color: #BBB"> </span>new<span style="color: #BBB"> </span>fastfibo<span style="color: #BBB"> </span>--flat
+</code></pre></div>
 <p>E logo de cara, eu vou editar o campo <code>requires-python</code> no <code>pyproject.toml</code> para</p>
-<p><code>toml
-requires-python = "&gt;=3.13,&lt;3.14"</code></p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code>requires-python<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span><span style="color: #BA2121">&quot;&gt;=3.13,&lt;3.14&quot;</span>
+</code></pre></div>
 <p>Isso vai nos permitir adicionar o <code>Ziggy Pydust</code> como uma dependência de desenvolvimento.</p>
-<p><code>sh
-poetry add -G dev ziggy-pydust==0.25.1</code></p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code>poetry<span style="color: #BBB"> </span>add<span style="color: #BBB"> </span>-G<span style="color: #BBB"> </span>dev<span style="color: #BBB"> </span>ziggy-pydust<span style="color: #666">==0</span>.25.1
+</code></pre></div>
 <p>O Ziggy Pydust é uma dependencia de desenvolvimento pois a biblioteca final não depende de nada que o Ziggy Pydust contém, a compilação será nativa. Vamos continuar desenvolvendo o projeto para entender.</p>
 <h2>Configurando o Ziggy Pydust</h2>
 <p>Para o Ziggy Pydust saber como fazer a build do nosso projeto, vamos ter que fazer algumas configurações.</p>
 <p>Antes, vamos criar um script de build especial na raiz do nosso projeto (mesma altura do arquivo <code>pyproject.toml</code>). Escreva o seguinte conteúdo num arquivo chamado <code>build.py</code>
-```python
-from pydust.build import build</p>
-<p>build()
-```</p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code><span style="color: #008000; font-weight: bold">from</span><span style="color: #BBB"> </span><span style="color: #00F; font-weight: bold">pydust.build</span><span style="color: #BBB"> </span><span style="color: #008000; font-weight: bold">import</span> build
+
+build()
+</code></pre></div></p>
 <p>E, em seguida, vamos alterar o <code>pyproject.toml</code> com as configurações relacionadas ao Ziggy Pydust.
 As alterações serão:</p>
 <ol>
 <li>
 <p>Dizer ao poetry para incluir o pacote:
-<code>toml
-[tool.poetry]
-include = [
-    { path = "src/", format = "sdist" },
-    { path = "fastfibo/*.so", format = "wheel" }
-]</code></p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code><span style="color: #008000; font-weight: bold">[tool.poetry]</span>
+include<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span>[
+<span style="color: #BBB">    </span>{<span style="color: #BBB"> </span>path<span style="color: #BBB"> </span>=<span style="color: #BBB"> </span><span style="color: #BA2121">&quot;src/&quot;</span>,<span style="color: #BBB"> </span>format<span style="color: #BBB"> </span>=<span style="color: #BBB"> </span><span style="color: #BA2121">&quot;sdist&quot;</span><span style="color: #BBB"> </span>},
+<span style="color: #BBB">    </span>{<span style="color: #BBB"> </span>path<span style="color: #BBB"> </span>=<span style="color: #BBB"> </span><span style="color: #BA2121">&quot;fastfibo/*.so&quot;</span>,<span style="color: #BBB"> </span>format<span style="color: #BBB"> </span>=<span style="color: #BBB"> </span><span style="color: #BA2121">&quot;wheel&quot;</span><span style="color: #BBB"> </span>}
+]
+</code></pre></div></p>
 </li>
 <li>
 <p>Dizer ao poetry para usar nosso script de build customizado:
-<code>toml
-[tool.poetry.build]
-script = "build.py"</code></p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code><span style="color: #008000; font-weight: bold">[tool.poetry.build]</span>
+script<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span><span style="color: #BA2121">&quot;build.py&quot;</span>
+</code></pre></div></p>
 </li>
 <li>
 <p>Incluir o ziggy-pydust nas nossas dependências de build:
-<code>toml
-[build-system]
-requires = ["poetry-core&gt;=2.0.0,&lt;3.0.0", "ziggy-pydust==0.25.1"]
-build-backend = "poetry.core.masonry.api"</code></p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code><span style="color: #008000; font-weight: bold">[build-system]</span>
+requires<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span>[<span style="color: #BA2121">&quot;poetry-core&gt;=2.0.0,&lt;3.0.0&quot;</span>,<span style="color: #BBB"> </span><span style="color: #BA2121">&quot;ziggy-pydust==0.25.1&quot;</span>]
+build-backend<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span><span style="color: #BA2121">&quot;poetry.core.masonry.api&quot;</span>
+</code></pre></div></p>
 </li>
 <li>
 <p>E, por último, configurar o Ziggy Pydust no modo <code>self-managed</code>:
-<code>toml
-[tool.pydust]
-self_managed = true</code>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code><span style="color: #008000; font-weight: bold">[tool.pydust]</span>
+self_managed<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span><span style="color: #008000; font-weight: bold">true</span>
+</code></pre></div>
 Isso vai comunicar ao Ziggy Pydust que nós queremos gerenciar o arquivo de build do zig manualmente.</p>
 </li>
 </ol>
 <p>O arquivo <code>pyproject.toml</code> final deverá se parecer com:</p>
-<p>```toml
-[project]
-name = "fastfibo"
-version = "0.1.0"
-description = ""
-authors = [
-    {name = "ivansantiagojr",email = "ivansantiago.junior@gmail.com"}
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code><span style="color: #008000; font-weight: bold">[project]</span>
+name<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span><span style="color: #BA2121">&quot;fastfibo&quot;</span>
+version<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span><span style="color: #BA2121">&quot;0.1.0&quot;</span>
+description<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span><span style="color: #BA2121">&quot;&quot;</span>
+authors<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span>[
+<span style="color: #BBB">    </span>{name<span style="color: #BBB"> </span>=<span style="color: #BBB"> </span><span style="color: #BA2121">&quot;ivansantiagojr&quot;</span>,email<span style="color: #BBB"> </span>=<span style="color: #BBB"> </span><span style="color: #BA2121">&quot;ivansantiago.junior@gmail.com&quot;</span>}
 ]
-readme = "README.md"
-requires-python = "&gt;=3.13,&lt;4.0"
-dependencies = [
-]</p>
-<p>[dependency-groups]
-dev = [
-    "ziggy-pydust (&gt;=0.25.1)"
-]</p>
-<p>[tool.poetry]
-include = [
-    { path = "src/", format = "sdist" },
-    { path = "fastfibo/*.so", format = "wheel" }
-]</p>
-<p>[tool.poetry.build]
-script = "build.py"</p>
-<p>[tool.pydust]
-self_managed = true</p>
-<p>[build-system]
-requires = ["poetry-core&gt;=2.0.0,&lt;3.0.0", "ziggy-pydust==0.25.1"]
-build-backend = "poetry.core.masonry.api"
-```</p>
+readme<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span><span style="color: #BA2121">&quot;README.md&quot;</span>
+requires-python<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span><span style="color: #BA2121">&quot;&gt;=3.13,&lt;4.0&quot;</span>
+dependencies<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span>[
+]
+
+<span style="color: #008000; font-weight: bold">[dependency-groups]</span>
+dev<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span>[
+<span style="color: #BBB">    </span><span style="color: #BA2121">&quot;ziggy-pydust (&gt;=0.25.1)&quot;</span>
+]
+
+<span style="color: #008000; font-weight: bold">[tool.poetry]</span>
+include<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span>[
+<span style="color: #BBB">    </span>{<span style="color: #BBB"> </span>path<span style="color: #BBB"> </span>=<span style="color: #BBB"> </span><span style="color: #BA2121">&quot;src/&quot;</span>,<span style="color: #BBB"> </span>format<span style="color: #BBB"> </span>=<span style="color: #BBB"> </span><span style="color: #BA2121">&quot;sdist&quot;</span><span style="color: #BBB"> </span>},
+<span style="color: #BBB">    </span>{<span style="color: #BBB"> </span>path<span style="color: #BBB"> </span>=<span style="color: #BBB"> </span><span style="color: #BA2121">&quot;fastfibo/*.so&quot;</span>,<span style="color: #BBB"> </span>format<span style="color: #BBB"> </span>=<span style="color: #BBB"> </span><span style="color: #BA2121">&quot;wheel&quot;</span><span style="color: #BBB"> </span>}
+]
+
+<span style="color: #008000; font-weight: bold">[tool.poetry.build]</span>
+script<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span><span style="color: #BA2121">&quot;build.py&quot;</span>
+
+<span style="color: #008000; font-weight: bold">[tool.pydust]</span>
+self_managed<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span><span style="color: #008000; font-weight: bold">true</span>
+
+<span style="color: #008000; font-weight: bold">[build-system]</span>
+requires<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span>[<span style="color: #BA2121">&quot;poetry-core&gt;=2.0.0,&lt;3.0.0&quot;</span>,<span style="color: #BBB"> </span><span style="color: #BA2121">&quot;ziggy-pydust==0.25.1&quot;</span>]
+build-backend<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span><span style="color: #BA2121">&quot;poetry.core.masonry.api&quot;</span>
+</code></pre></div>
 <p>Ufa..., setup feito. Agora vamos escrever o nosso primeiro módulo em Zig!</p>
 <h3>"Olá, pessoas!" em Zig, mas para o Python</h3>
 <p>Antes de já começar com o código de fibonacci, vamos ver se um simples print funciona.</p>
@@ -186,27 +190,29 @@ build-backend = "poetry.core.masonry.api"
 <ol>
 <li>Crie o arquivo <code>src/fastfibo/ola.zig</code></li>
 <li>Adicione o seguinte código no arquivo criado no passo anterior:
-```zig
-const py = @import("pydust");</li>
-</ol>
-<p>const root = @This();</p>
-<p>pub fn ola() !py.PyString(root) {
-    return try py.PyString(root).create("Olá, pessoas!");
-}</p>
-<p>comptime {
-    py.rootmodule(root);
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code><span style="color: #008000; font-weight: bold">const</span><span style="color: #BBB"> </span>py<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span><span style="color: #008000">@import</span>(<span style="color: #BA2121">&quot;pydust&quot;</span>);
+
+<span style="color: #008000; font-weight: bold">const</span><span style="color: #BBB"> </span>root<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span><span style="color: #008000">@This</span>();
+
+<span style="color: #008000; font-weight: bold">pub</span><span style="color: #BBB"> </span><span style="color: #008000; font-weight: bold">fn</span><span style="color: #BBB"> </span>ola()<span style="color: #BBB"> </span><span style="color: #666">!</span>py.PyString(root)<span style="color: #BBB"> </span>{
+<span style="color: #BBB">    </span><span style="color: #008000; font-weight: bold">return</span><span style="color: #BBB"> </span><span style="color: #008000; font-weight: bold">try</span><span style="color: #BBB"> </span>py.PyString(root).create(<span style="color: #BA2121">&quot;Olá, pessoas!&quot;</span>);
 }
-```</p>
+
+<span style="color: #008000; font-weight: bold">comptime</span><span style="color: #BBB"> </span>{
+<span style="color: #BBB">    </span>py.rootmodule(root);
+}
+</code></pre></div></li>
+</ol>
 <h4>Testando o módulo em Zig</h4>
 <p>Para podermos saber se o módulo Zig funciona do Python, vamos escrever testes. Para isso, instale o pytest com:</p>
-<p><code>sh
-poetry add -G dev pytest</code></p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code>poetry<span style="color: #BBB"> </span>add<span style="color: #BBB"> </span>-G<span style="color: #BBB"> </span>dev<span style="color: #BBB"> </span>pytest
+</code></pre></div>
 <p>E podemos escrever nosso test em <code>tests/test_ola.py</code>:</p>
-<p>```python
-from fastfibo.ola import ola</p>
-<p>def test_ola()
-    assert ola() == "Olá, pessoas!"
-```</p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code><span style="color: #008000; font-weight: bold">from</span><span style="color: #BBB"> </span><span style="color: #00F; font-weight: bold">fastfibo.ola</span><span style="color: #BBB"> </span><span style="color: #008000; font-weight: bold">import</span> ola
+
+<span style="color: #008000; font-weight: bold">def</span><span style="color: #BBB"> </span><span style="color: #00F">test_ola</span>()
+    <span style="color: #008000; font-weight: bold">assert</span> ola() <span style="color: #666">==</span> <span style="color: #BA2121">&quot;Olá, pessoas!&quot;</span>
+</code></pre></div>
 <p>Maaas, antes de rodar o test, precisamos dizer para o Zig como compilar tudo isso. Para isso, vamos aprender sobre scripts de build.</p>
 <h3>O <code>build.zig</code></h3>
 <p>Até agora a gente só usou o comando build-exe, e até passamos alguns parâmetros para incluir bibliotecas ou mudar o alvo de compilação, mas quando um projeto fica suficientemente grande, é preferível definir a forma como o projeto deve ser compilado em um arquivo. No Python, tempos o <code>pyproject.toml</code> para definir como fazer a build do projeto, em Zig, temos o script <code>build.zig</code>.</p>
@@ -214,164 +220,163 @@ from fastfibo.ola import ola</p>
 <p>Assim como compilamos o <code>hello.c</code> com Zig, o build.zig também pode ser usado para definir compilar projetos C/C++. Aliás, até o próprio interpretador do Python já foi compilado com Zig. Confira em <a href="https://github.com/allyourcodebase/cpython">github.com/allyourcodebase/cpython</a>.</p>
 </blockquote>
 <p>O <code>build.zig</code> deve ser criado na raiz do nosso projeto com o seguinte código:</p>
-<p>```zig
-const std = @import("std");
-const py = @import("./pydust.build.zig");</p>
-<p>pub fn build(b: *std.Build) void {
-    const target = b.standardTargetOptionsQueryOnly(.{});
-    const optimize = b.standardOptimizeOption(.{});</p>
-<pre><code>const test_step = b.step("test", "Run library tests");
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code><span style="color: #008000; font-weight: bold">const</span><span style="color: #BBB"> </span>std<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span><span style="color: #008000">@import</span>(<span style="color: #BA2121">&quot;std&quot;</span>);
+<span style="color: #008000; font-weight: bold">const</span><span style="color: #BBB"> </span>py<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span><span style="color: #008000">@import</span>(<span style="color: #BA2121">&quot;./pydust.build.zig&quot;</span>);
 
-const pydust = py.addPydust(b, .{
-    .test_step = test_step,
-});
+<span style="color: #008000; font-weight: bold">pub</span><span style="color: #BBB"> </span><span style="color: #008000; font-weight: bold">fn</span><span style="color: #BBB"> </span>build(b<span style="color: #666">:</span><span style="color: #BBB"> </span><span style="color: #666">*</span>std.Build)<span style="color: #BBB"> </span><span style="color: #B00040">void</span><span style="color: #BBB"> </span>{
+<span style="color: #BBB">    </span><span style="color: #008000; font-weight: bold">const</span><span style="color: #BBB"> </span>target<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span>b.standardTargetOptionsQueryOnly(.{});
+<span style="color: #BBB">    </span><span style="color: #008000; font-weight: bold">const</span><span style="color: #BBB"> </span>optimize<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span>b.standardOptimizeOption(.{});
 
-_ = pydust.addPythonModule(.{
-    .name = "fastfibo.ola",
-    .root_source_file = b.path("src/ola.zig"),
-    .limited_api = true,
-    .target = target,
-    .optimize = optimize,
-});
-</code></pre>
-<p>}
-```</p>
+<span style="color: #BBB">    </span><span style="color: #008000; font-weight: bold">const</span><span style="color: #BBB"> </span>test_step<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span>b.step(<span style="color: #BA2121">&quot;test&quot;</span>,<span style="color: #BBB"> </span><span style="color: #BA2121">&quot;Run library tests&quot;</span>);
+
+<span style="color: #BBB">    </span><span style="color: #008000; font-weight: bold">const</span><span style="color: #BBB"> </span>pydust<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span>py.addPydust(b,<span style="color: #BBB"> </span>.{
+<span style="color: #BBB">        </span>.test_step<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span>test_step,
+<span style="color: #BBB">    </span>});
+
+<span style="color: #BBB">    </span>_<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span>pydust.addPythonModule(.{
+<span style="color: #BBB">        </span>.name<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span><span style="color: #BA2121">&quot;fastfibo.ola&quot;</span>,
+<span style="color: #BBB">        </span>.root_source_file<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span>b.path(<span style="color: #BA2121">&quot;src/ola.zig&quot;</span>),
+<span style="color: #BBB">        </span>.limited_api<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span><span style="color: #008000; font-weight: bold">true</span>,
+<span style="color: #BBB">        </span>.target<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span>target,
+<span style="color: #BBB">        </span>.optimize<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span>optimize,
+<span style="color: #BBB">    </span>});
+}
+</code></pre></div>
 <h3>Rodando os testes</h3>
 <p>Agora, dentro do ambiente virtual, que pode ser ativado com <code>poetry shell</code> (caso você tenha o <a href="https://github.com/python-poetry/poetry-plugin-shell">plugin shell</a> instalado), nós podemos rodar os testes com</p>
-<p><code>shell
-pytest . -vv</code></p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code>pytest<span style="color: #BBB"> </span>.<span style="color: #BBB"> </span>-vv
+</code></pre></div>
 <p>E, se tudo deu certo nossos testes passaram!!!</p>
 <p>Mas, caso você queira algo mais visual, você pode rodar o shell do Python de dentro do ambiente virtual, e rodar:</p>
-<p>```python</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>from fastfibo.ola import ola
-ola()
-'Olá, pessoas!'
-```</p>
-</blockquote>
-</blockquote>
-</blockquote>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code><span style="color: #666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">from</span><span style="color: #BBB"> </span><span style="color: #00F; font-weight: bold">fastfibo.ola</span><span style="color: #BBB"> </span><span style="color: #008000; font-weight: bold">import</span> ola
+<span style="color: #666">&gt;&gt;&gt;</span> ola()
+<span style="color: #BA2121">&#39;Olá, pessoas!&#39;</span>
+</code></pre></div>
 <h2>Desenvolvendo a função de fibonacci</h2>
 <p>Agora, vamos desenvolver uma função que é pesada em CPU para comparar a performance do Python com a do módulo me zig.</p>
 <p>O primeiro passo é criar o arquivo <code>src/fibo.zig</code> com a função:</p>
-<p>```zig
-const std = @import("std");
-const py = @import("pydust");</p>
-<p>const root = @This();</p>
-<p>pub fn fibo(args: struct { n: u64 }) u64 {
-    if (args.n &lt; 2) return args.n;
-    var f0: u64 = 0;
-    var f1: u64 = 1;
-    var fnth: u64 = f0 + f1;
-    for (2..args.n) |_| {
-        f0 = f1;
-        f1 = fnth;
-        fnth = f0 + f1;
-    }
-    return fnth;
-}</p>
-<p>comptime {
-    py.rootmodule(root);
-}</p>
-<p>const testing = std.testing;
-test "fibonacci iterative" {
-    py.initialize();
-    defer py.finalize();</p>
-<pre><code>try testing.expectEqual(@as(u64, 34), fibo(.{ .n = 9 }));
-</code></pre>
-<p>}
-```
+<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code><span style="color: #008000; font-weight: bold">const</span><span style="color: #BBB"> </span>std<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span><span style="color: #008000">@import</span>(<span style="color: #BA2121">&quot;std&quot;</span>);
+<span style="color: #008000; font-weight: bold">const</span><span style="color: #BBB"> </span>py<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span><span style="color: #008000">@import</span>(<span style="color: #BA2121">&quot;pydust&quot;</span>);
+
+<span style="color: #008000; font-weight: bold">const</span><span style="color: #BBB"> </span>root<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span><span style="color: #008000">@This</span>();
+
+<span style="color: #008000; font-weight: bold">pub</span><span style="color: #BBB"> </span><span style="color: #008000; font-weight: bold">fn</span><span style="color: #BBB"> </span>fibo(args<span style="color: #666">:</span><span style="color: #BBB"> </span><span style="color: #008000; font-weight: bold">struct</span><span style="color: #BBB"> </span>{<span style="color: #BBB"> </span>n<span style="color: #666">:</span><span style="color: #BBB"> </span><span style="color: #B00040">u64</span><span style="color: #BBB"> </span>})<span style="color: #BBB"> </span><span style="color: #B00040">u64</span><span style="color: #BBB"> </span>{
+<span style="color: #BBB">    </span><span style="color: #008000; font-weight: bold">if</span><span style="color: #BBB"> </span>(args.n<span style="color: #BBB"> </span><span style="color: #666">&lt;</span><span style="color: #BBB"> </span><span style="color: #666">2</span>)<span style="color: #BBB"> </span><span style="color: #008000; font-weight: bold">return</span><span style="color: #BBB"> </span>args.n;
+<span style="color: #BBB">    </span><span style="color: #008000; font-weight: bold">var</span><span style="color: #BBB"> </span>f0<span style="color: #666">:</span><span style="color: #BBB"> </span><span style="color: #B00040">u64</span><span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span><span style="color: #666">0</span>;
+<span style="color: #BBB">    </span><span style="color: #008000; font-weight: bold">var</span><span style="color: #BBB"> </span>f1<span style="color: #666">:</span><span style="color: #BBB"> </span><span style="color: #B00040">u64</span><span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span><span style="color: #666">1</span>;
+<span style="color: #BBB">    </span><span style="color: #008000; font-weight: bold">var</span><span style="color: #BBB"> </span>fnth<span style="color: #666">:</span><span style="color: #BBB"> </span><span style="color: #B00040">u64</span><span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span>f0<span style="color: #BBB"> </span><span style="color: #666">+</span><span style="color: #BBB"> </span>f1;
+<span style="color: #BBB">    </span><span style="color: #008000; font-weight: bold">for</span><span style="color: #BBB"> </span>(<span style="color: #666">2</span>..args.n)<span style="color: #BBB"> </span><span style="color: #666">|</span>_<span style="color: #666">|</span><span style="color: #BBB"> </span>{
+<span style="color: #BBB">        </span>f0<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span>f1;
+<span style="color: #BBB">        </span>f1<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span>fnth;
+<span style="color: #BBB">        </span>fnth<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span>f0<span style="color: #BBB"> </span><span style="color: #666">+</span><span style="color: #BBB"> </span>f1;
+<span style="color: #BBB">    </span>}
+<span style="color: #BBB">    </span><span style="color: #008000; font-weight: bold">return</span><span style="color: #BBB"> </span>fnth;
+}
+
+<span style="color: #008000; font-weight: bold">comptime</span><span style="color: #BBB"> </span>{
+<span style="color: #BBB">    </span>py.rootmodule(root);
+}
+
+<span style="color: #008000; font-weight: bold">const</span><span style="color: #BBB"> </span>testing<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span>std.testing;
+<span style="color: #008000; font-weight: bold">test</span><span style="color: #BBB"> </span><span style="color: #BA2121">&quot;fibonacci iterative&quot;</span><span style="color: #BBB"> </span>{
+<span style="color: #BBB">    </span>py.initialize();
+<span style="color: #BBB">    </span><span style="color: #008000; font-weight: bold">defer</span><span style="color: #BBB"> </span>py.finalize();
+
+<span style="color: #BBB">    </span><span style="color: #008000; font-weight: bold">try</span><span style="color: #BBB"> </span>testing.expectEqual(<span style="color: #008000">@as</span>(<span style="color: #B00040">u64</span>,<span style="color: #BBB"> </span><span style="color: #666">34</span>),<span style="color: #BBB"> </span>fibo(.{<span style="color: #BBB"> </span>.n<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span><span style="color: #666">9</span><span style="color: #BBB"> </span>}));
+}
+</code></pre></div>
 Legal, agora temos nossa implementação de fibonacci em Zig com um teste.</p>
 <p>Só falta adicionar esse módulo no nosso arquivo de build com:</p>
-<p><code>zig
-    _ = pydust.addPythonModule(.{
-        .name = "fastfibo.fibo",
-        .root_source_file = b.path("src/fibo.zig"),
-        .limited_api = true,
-        .target = target,
-        .optimize = optimize,
-    });</code></p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code><span style="color: #BBB">    </span>_<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span>pydust.addPythonModule(.{
+<span style="color: #BBB">        </span>.name<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span><span style="color: #BA2121">&quot;fastfibo.fibo&quot;</span>,
+<span style="color: #BBB">        </span>.root_source_file<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span>b.path(<span style="color: #BA2121">&quot;src/fibo.zig&quot;</span>),
+<span style="color: #BBB">        </span>.limited_api<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span><span style="color: #008000; font-weight: bold">true</span>,
+<span style="color: #BBB">        </span>.target<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span>target,
+<span style="color: #BBB">        </span>.optimize<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span>optimize,
+<span style="color: #BBB">    </span>});
+</code></pre></div>
 <blockquote>
 <p>O arquivo <code>build.zig</code> completo fica assim:
-```zig
-const std = @import("std");
-const py = @import("./pydust.build.zig");</p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code><span style="color: #008000; font-weight: bold">const</span><span style="color: #BBB"> </span>std<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span><span style="color: #008000">@import</span>(<span style="color: #BA2121">&quot;std&quot;</span>);
+<span style="color: #008000; font-weight: bold">const</span><span style="color: #BBB"> </span>py<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span><span style="color: #008000">@import</span>(<span style="color: #BA2121">&quot;./pydust.build.zig&quot;</span>);
+
+<span style="color: #008000; font-weight: bold">pub</span><span style="color: #BBB"> </span><span style="color: #008000; font-weight: bold">fn</span><span style="color: #BBB"> </span>build(b<span style="color: #666">:</span><span style="color: #BBB"> </span><span style="color: #666">*</span>std.Build)<span style="color: #BBB"> </span><span style="color: #B00040">void</span><span style="color: #BBB"> </span>{
+<span style="color: #BBB">    </span><span style="color: #008000; font-weight: bold">const</span><span style="color: #BBB"> </span>target<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span>b.standardTargetOptionsQueryOnly(.{});
+<span style="color: #BBB">    </span><span style="color: #008000; font-weight: bold">const</span><span style="color: #BBB"> </span>optimize<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span>b.standardOptimizeOption(.{});
+
+<span style="color: #BBB">    </span><span style="color: #008000; font-weight: bold">const</span><span style="color: #BBB"> </span>test_step<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span>b.step(<span style="color: #BA2121">&quot;test&quot;</span>,<span style="color: #BBB"> </span><span style="color: #BA2121">&quot;Run library tests&quot;</span>);
+
+<span style="color: #BBB">    </span><span style="color: #008000; font-weight: bold">const</span><span style="color: #BBB"> </span>pydust<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span>py.addPydust(b,<span style="color: #BBB"> </span>.{
+<span style="color: #BBB">        </span>.test_step<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span>test_step,
+<span style="color: #BBB">    </span>});
+
+<span style="color: #BBB">    </span>_<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span>pydust.addPythonModule(.{
+<span style="color: #BBB">        </span>.name<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span><span style="color: #BA2121">&quot;fastfibo.ola&quot;</span>,
+<span style="color: #BBB">        </span>.root_source_file<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span>b.path(<span style="color: #BA2121">&quot;src/ola.zig&quot;</span>),
+<span style="color: #BBB">        </span>.limited_api<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span><span style="color: #008000; font-weight: bold">true</span>,
+<span style="color: #BBB">        </span>.target<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span>target,
+<span style="color: #BBB">        </span>.optimize<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span>optimize,
+<span style="color: #BBB">    </span>});
+
+<span style="color: #BBB">    </span>_<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span>pydust.addPythonModule(.{
+<span style="color: #BBB">        </span>.name<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span><span style="color: #BA2121">&quot;fastfibo.fibo&quot;</span>,
+<span style="color: #BBB">        </span>.root_source_file<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span>b.path(<span style="color: #BA2121">&quot;src/fibo.zig&quot;</span>),
+<span style="color: #BBB">        </span>.limited_api<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span><span style="color: #008000; font-weight: bold">true</span>,
+<span style="color: #BBB">        </span>.target<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span>target,
+<span style="color: #BBB">        </span>.optimize<span style="color: #BBB"> </span><span style="color: #666">=</span><span style="color: #BBB"> </span>optimize,
+<span style="color: #BBB">    </span>});
+}
+</code></pre></div></p>
 </blockquote>
-<p>pub fn build(b: *std.Build) void {
-    const target = b.standardTargetOptionsQueryOnly(.{});
-    const optimize = b.standardOptimizeOption(.{});</p>
-<pre><code>const test_step = b.step("test", "Run library tests");
-
-const pydust = py.addPydust(b, .{
-    .test_step = test_step,
-});
-
-_ = pydust.addPythonModule(.{
-    .name = "fastfibo.ola",
-    .root_source_file = b.path("src/ola.zig"),
-    .limited_api = true,
-    .target = target,
-    .optimize = optimize,
-});
-
-_ = pydust.addPythonModule(.{
-    .name = "fastfibo.fibo",
-    .root_source_file = b.path("src/fibo.zig"),
-    .limited_api = true,
-    .target = target,
-    .optimize = optimize,
-});
-</code></pre>
-<p>}
-```</p>
 <p>Vamos rodar os testes Python para essa função?</p>
 <p>Em <code>tests/test_fibo.py</code>, escreva:</p>
-<p>```python
-from fastfibo.fibo import fibo</p>
-<p>def test_fibo():
-    result = fibo(3)
-    expected_result = 2</p>
-<pre><code>assert result == expected_result
-</code></pre>
-<p>```</p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code><span style="color: #008000; font-weight: bold">from</span><span style="color: #BBB"> </span><span style="color: #00F; font-weight: bold">fastfibo.fibo</span><span style="color: #BBB"> </span><span style="color: #008000; font-weight: bold">import</span> fibo
+
+
+<span style="color: #008000; font-weight: bold">def</span><span style="color: #BBB"> </span><span style="color: #00F">test_fibo</span>():
+    result <span style="color: #666">=</span> fibo(<span style="color: #666">3</span>)
+    expected_result <span style="color: #666">=</span> <span style="color: #666">2</span>
+
+    <span style="color: #008000; font-weight: bold">assert</span> result <span style="color: #666">==</span> expected_result
+</code></pre></div>
 <p>Se tudo estiver correto, nós devemos ver os dois testes passando quando rodamos <code>pytest -vv</code> de dentro do ambiente virtual:
-```sh
-===================== test session starts =====================
-platform linux -- Python 3.13.7, pytest-9.0.1, pluggy-1.6.0
-rootdir: /home/ivan/Documents/fastfibo
-configfile: pyproject.toml
-plugins: ziggy-pydust-0.25.1
-collected 2 items</p>
-<p>tests/test_fibo.py .                                    [ 50%]
-tests/test_ola.py .                                     [100%]</p>
-<p>====================== 2 passed in 0.31s ======================
-```</p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code><span style="color: #666">=====================</span><span style="color: #BBB"> </span><span style="color: #008000">test</span><span style="color: #BBB"> </span>session<span style="color: #BBB"> </span><span style="color: #19177C">starts</span><span style="color: #BBB"> </span><span style="color: #666">=====================</span>
+platform<span style="color: #BBB"> </span>linux<span style="color: #BBB"> </span>--<span style="color: #BBB"> </span>Python<span style="color: #BBB"> </span><span style="color: #666">3</span>.13.7,<span style="color: #BBB"> </span>pytest-9.0.1,<span style="color: #BBB"> </span>pluggy-1.6.0
+rootdir:<span style="color: #BBB"> </span>/home/ivan/Documents/fastfibo
+configfile:<span style="color: #BBB"> </span>pyproject.toml
+plugins:<span style="color: #BBB"> </span>ziggy-pydust-0.25.1
+collected<span style="color: #BBB"> </span><span style="color: #666">2</span><span style="color: #BBB"> </span>items
+
+tests/test_fibo.py<span style="color: #BBB"> </span>.<span style="color: #BBB">                                    </span><span style="color: #666">[</span><span style="color: #BBB"> </span><span style="color: #666">50</span>%<span style="color: #666">]</span>
+tests/test_ola.py<span style="color: #BBB"> </span>.<span style="color: #BBB">                                     </span><span style="color: #666">[100</span>%<span style="color: #666">]</span>
+
+<span style="color: #666">======================</span><span style="color: #BBB"> </span><span style="color: #666">2</span><span style="color: #BBB"> </span>passed<span style="color: #BBB"> </span><span style="color: #008000; font-weight: bold">in</span><span style="color: #BBB"> </span><span style="color: #666">0</span>.31s<span style="color: #BBB"> </span><span style="color: #666">======================</span>
+</code></pre></div></p>
 <h2>Ok, mas por que usar Ziggy Pydust?</h2>
 <p>Existem alguns motivos para desenvolver um módulo Python em outra linguagem. Você pode estar buscando usar algo que o Python só entrega pela ABI C, você pode querer fazer uso do ecossistema específico de outra linguagem ou buscar um ganho de performance significativo. </p>
 <p>No caso trabalho nesse texto, o ganho de performance é o ponto chave para usar Ziggy Pydust, para isso, vamos fazer uma comparação rápida entre uma implementação de da função para calcular a sequência de Fibonacci em Python puro e a que fizemos agora em Zig.</p>
 <p>Para isso, nós escrevemos uma simples implementação da função para calcular Fibonacci em Python puro.</p>
 <p>Crie o arquivo <code>fastfibo/fib.py</code> com o seguinte conteúdo:</p>
-<p>```python
-def fib(n: int):
-    a = 0
-    b = 1</p>
-<pre><code>for i in range(n):
-    a, b = a + b, a
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code><span style="color: #008000; font-weight: bold">def</span><span style="color: #BBB"> </span><span style="color: #00F">fib</span>(n: <span style="color: #008000">int</span>):
+    a <span style="color: #666">=</span> <span style="color: #666">0</span>
+    b <span style="color: #666">=</span> <span style="color: #666">1</span>
 
-return a
-</code></pre>
-<p>```</p>
+    <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #A2F; font-weight: bold">in</span> <span style="color: #008000">range</span>(n):
+        a, b <span style="color: #666">=</span> a <span style="color: #666">+</span> b, a
+
+    <span style="color: #008000; font-weight: bold">return</span> a
+</code></pre></div>
 <p>E um arquivo chamado <code>run.py</code>, que é o que vai calcular a diferença de performance entre as duas funções:</p>
-<p>```python
-from timeit import timeit</p>
-<p>py = timeit("fib(93)", number=1_000_000, setup='from fastfibo.fib import fib')
-zig = timeit("fibo(93)", number=1_000_000, setup="from fastfibo.fibo import fibo")</p>
-<p>print("Python puro", py)
-print("Ziggy Pydust", zig)</p>
-<p>print(f"{py/zig=}")
-```</p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code><span style="color: #008000; font-weight: bold">from</span><span style="color: #BBB"> </span><span style="color: #00F; font-weight: bold">timeit</span><span style="color: #BBB"> </span><span style="color: #008000; font-weight: bold">import</span> timeit
+
+py <span style="color: #666">=</span> timeit(<span style="color: #BA2121">&quot;fib(93)&quot;</span>, number<span style="color: #666">=1_000_000</span>, setup<span style="color: #666">=</span><span style="color: #BA2121">&#39;from fastfibo.fib import fib&#39;</span>)
+zig <span style="color: #666">=</span> timeit(<span style="color: #BA2121">&quot;fibo(93)&quot;</span>, number<span style="color: #666">=1_000_000</span>, setup<span style="color: #666">=</span><span style="color: #BA2121">&quot;from fastfibo.fibo import fibo&quot;</span>)
+
+<span style="color: #008000">print</span>(<span style="color: #BA2121">&quot;Python puro&quot;</span>, py)
+<span style="color: #008000">print</span>(<span style="color: #BA2121">&quot;Ziggy Pydust&quot;</span>, zig)
+
+<span style="color: #008000">print</span>(<span style="color: #BA2121">f&quot;</span><span style="color: #A45A77; font-weight: bold">{</span>py<span style="color: #666">/</span>zig<span style="color: #A45A77; font-weight: bold">=}</span><span style="color: #BA2121">&quot;</span>)
+</code></pre></div>
 <p>O código acima:</p>
 <ol>
 <li>Conta o tempo que levou para executar a função fib (em Python) com o parâmetro <code>93</code> um milhão de vezes.</li>
@@ -379,9 +384,10 @@ print("Ziggy Pydust", zig)</p>
 <li>Calcula quantas vezes o a implementação em Zig é mais rápida.</li>
 </ol>
 <p>Os resultados na minha máquina mostram que a implementação em Zig pode ser 7 vezes mais rápida do que a em Python puro:</p>
-<p><code>Python puro 2.0440780429998995
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code>Python puro 2.0440780429998995
 Ziggy Pydust 0.2800135359975684
-py/zig=7.299925825791686</code></p>
+py/zig=7.299925825791686
+</code></pre></div>
 <p>Esses resultados mostram que somente por escrever a extensão em Zig, já tivemos um ganho de performance bem significativo em relação a implementação em Python.</p>
 <h2>Vale a pena usar o Ziggy Pydust?</h2>
 <p>Mais cedo eu pontuei que escrever extensões Python vale a pena em alguns casos. Vamos analisar se Zig e Ziggy pydust se encaixa nesses casos?</p>
@@ -395,7 +401,7 @@ py/zig=7.299925825791686</code></p>
 <p>Na live do dunossauro que eu citei anteriormente, os resultados mostrados são bem diferentes. Apesar de esses números não serem considerados benchmarks reais, existem muitas variáveis nos ambiente, etc. Entretanto, usar C ou Cython mostrou ganhos de performance muito maiores. Veja os resultados das comparações entre PYthon, Cython e C do Dunossauro (rodando na mesma máquina da comparação entre Python e Zig:</p>
 </li>
 </ol>
-<p><code>Python Puro 2.8343024810019415
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code>Python Puro 2.8343024810019415
 Cython/Python 0.06522368900186848
 Cython Puro 0.05452507299196441
 C Puro 0.055832105994340964
@@ -403,7 +409,8 @@ py/cy=43.45510847938617
 py/px=51.98163570399337
 py/cc=50.76474244566775
 cy/cc=1.1682111545009501
-px/cc=0.9765899390843499</code></p>
+px/cc=0.9765899390843499
+</code></pre></div>
 <h2>Conclusão</h2>
 <p>C e Cython (e provavelmente Rust com <a href="https://pyo3.rs">PyO3</a>) oferecem maiores ganhos de performance e, certamente, um ecossistema maior e mais desenvolvido do que Zig com Ziggy Pydust. Mas isso não é demérito algum. Zig é uma linguagem altamente instável, as coisas quebram constantemente, e o Ziggy Pydust é novo, com comunidade pequena. Tudo isso torna mais difícil fazer otimizações para os ganhos de performance serem ainda mais impressionantes.</p>
 <p>Por isso, eu diria para avaliar bem se você deve usar Ziggy Pydust no seu trabalho ou projeto importante. E se você é um entusiasta Zig e Python, vamos conversar e tentar construir algo para unir as vantagens das duas linguagens de forma interessante!</p>
