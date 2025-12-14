@@ -1,6 +1,9 @@
 +++
 title = 'Construindo bibliotecas Python com Zig'
 template = 'blog/article.html'
+
+[extra]
+summary = 'Aprenda como desenvolver bibliotecas Python com Zig e saiba como Ziggy Pydust deixa isso mais fácil.'
 +++
 
 # Construindo Bibliotecas Python com Zig - Introdução a Ziggy Pydust
@@ -23,8 +26,7 @@ Da [documentação](https://ziglang.org/), Zig é:
 > Uma linguagem de programação de propósito geral e um conjunto de ferramentas
 > para manter software robusto, otimizado e reutilizável.
 
-Na prática, isso quer dizer que Zig não é só uma linguagem. Vamos explorar isso
-mais para frente. Antes, vamos ver a cara da linguagem.
+Na prática, isso quer dizer que Zig não é só uma linguagem. Vamos explorar isso mais para frente. Antes, vamos ver a cara da linguagem.
 
 # "Olá, pessoas!" em Zig
 
