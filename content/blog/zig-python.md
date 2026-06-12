@@ -6,8 +6,6 @@ template = 'blog/article.html'
 summary = 'Aprenda como desenvolver bibliotecas Python com Zig e saiba como Ziggy Pydust deixa isso mais fácil.'
 +++
 
-# Construindo Bibliotecas Python com Zig - Introdução a Ziggy Pydust
-
 # Índice
 1. O que é Zig?
 2. "Olá, pessoas!" em Zig
