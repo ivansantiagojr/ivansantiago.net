@@ -94,5 +94,10 @@ Os motivos de eu ter escolhido o fork são alguns. Como:
 
 ## Ressalvas
 
-1. LuaJIT?
-2. Difícil demais?
+Eu sei, talvez esse projeto já exista, talvez seja o [Luau](https://luau.org/), talvez [LuaJIT](https://luajit.org/) já resolva alguns dos problemas que citei, ou até mesmo algum outro projeto de uma pessoa que teve a mesma ideia que eu (se existir, por favor me avise), mas eu quero fazer o meu próprio para aprender. Eu obviamente ficarei feliz se o projeto ganhar tração e tiver uma comunidade de usuários, mas eu realmente não acho que isso vá acontecer.
+
+Sim, parece ser difícil demais fazer esse projeto, ou que o meu plano coloca muitas coisas na frente do meu objetivo real, mas a minha ideia é me divertir no caminho. Talvez durante algum dos passos eu descubra que nada faz sentido, que eu não gosto de Lua, que eu não gosto de interpretadores, nem de Zig. Tudo bem, eu só quero passar por esse processo. Acho que vou levar aprendizados de alguma forma ou de outra.
+
+## Acompanhe
+
+Eu não sei uma forma fácil de te ajudar a acompanhar o blog. Esse site é gerado com meu próprio SSG, o [hipertexto](https://github.com/artefatto/hipertexto), e ele ainda não suporta RSS ou algo parecido. Talvez dar `watch` no repositório do GitHub ajude por agora: [ivansantiagojr/ivansantiago.net](https://github.com/ivansantiagojr/ivansantiago.net).
