@@ -1,14 +1,14 @@
 {% extends "base.html" %} 
 
 {% block head %}
-    <title>{{ page.title }}</title>
+    <title>{{ section.title }}</title>
 {% endblock head %} 
 
 {% block content %}
     <main class="container">
     <div class="content-container">
     <h1>Blog do Ivan</h1>
-    {% for post in page.pages %}
+    {% for post in section.pages %}
         <article>
             <a href="{{ post.url }}">
                 <h4>
