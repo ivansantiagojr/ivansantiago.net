@@ -12,7 +12,7 @@ Acredito que toda pessoa que acabou de aprender a programar tem aquela sensaçã
 
 E eu espero fortemente que eu não tenha descrito nas linhas acima algo que somente eu acredite que seja normal, e acabei desabafando algo que somente eu passei hahaha (duvido muito). 
 
-Comigo, me interessei por diversas linguagens, mas a que mais chamou minha atenção e eu foquei por mais tempo foi *Python*. Eu realmente gosto MUITO de Python, gosto de como podemos fazer tantas coisas diferentes com ela, gosto da maneira com que a linguagem é dirigida, amo a comunidade e a forma única como Python permite começar o aprendizado de forma exteemamente fácil com scripts fazendo tarefas simples até entender conceitos complexos como programação assíncrona, programação paralela, **tipagem gradual**, etc.
+Comigo, me interessei por diversas linguagens, mas a que mais chamou minha atenção e eu foquei por mais tempo foi *Python*. Eu realmente gosto MUITO de Python, gosto de como podemos fazer tantas coisas diferentes com ela, gosto da maneira com que a linguagem é dirigida, amo a comunidade e a forma única como Python permite começar o aprendizado de forma extremamente fácil com scripts fazendo tarefas simples até entender conceitos complexos como programação assíncrona, programação paralela, **tipagem gradual**, etc.
 
 ## Motivação
 
