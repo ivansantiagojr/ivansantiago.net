@@ -66,7 +66,7 @@ Nesse sentido, existem 3 projetos que eu gostaria de fazer com Lua:
 
 1. Um framework web pequeno (que eu já comecei a desenvolver, se chama [Hiper](https://github.com/ivansantiagojr/hiper)).
 
-    A ideia desse framework não é fazer tudo do zero, mas pegar um servidor de HTTP em Lua, escolhi o [pegasus.lua](https://github.com/EvandroLG/pegasus.lua/) e fazer uma API legal em cima disso. Talvez inspirado por coisas que já uso no trabalho, como Django e FastAPI. Não vou fazer algo complexo demais, e provavelmente você não deveria usar esse framework, mas eu acho importante publicar um pacote em alguma linguagem para entendê-la bem, e esse projeto eu achei divertido. Então é isso, sem motivos profundos.
+    A ideia desse framework não é fazer tudo do zero, mas pegar um servidor de HTTP em Lua, escolhi o [pegasus.lua](https://github.com/EvandroLG/pegasus.lua/) e fazer uma API legal em cima disso. Inspirado por coisas que já uso no trabalho, como Django e FastAPI. Não vou fazer algo complexo demais, e provavelmente você não deveria usar esse framework, mas eu acho importante publicar um pacote em alguma linguagem para entendê-la bem, e esse projeto eu achei divertido. Então é isso, sem motivos profundos.
 
 2. Um programa de linha de comando de teste de carga em API inspirado pelo [oha](https://github.com/hatoo/oha). 
 
