@@ -80,7 +80,7 @@ Nesse sentido, existem 3 projetos que eu gostaria de fazer com Lua:
 
 Agora que já sei um pouco de Lua, eu preciso aprender como os interpretadores funcionam, se não, nunca vou conseguir construir um. Para isso, eu vou estudar o curso de como construir um shell do [Blau Araújo (debxp)](https://debxp.org/). Eu comprei o curso dele anteriormente, mas não consegui estudar ao vivo. Vou tentar recuperar os vídeos e materiais e estudar "sozinho" (as aspas estão aqui porque o Blau tem comunidades no Telegram e YouTube que são muito colaborativas, então, sei que posso tirar dúvidas se precisar).
 
-A outra fonte de estudo vai ser o livro [Crafting Interpreters](https://craftinginterpreters.com/) gratuitamente online e fazer as interpretações em Zig, sempre ganhando mais familiaridade com a linguagem. Com o livro, eu espero ter a base teórica necessária para construir Jaci, é forma como escolhi nomear a minha linguagem, devo falar sobre o motivo em um artigo futuro.
+A outra fonte de estudo vai ser o livro [Crafting Interpreters](https://craftinginterpreters.com/) gratuitamente online e fazer as interpretações em Zig, sempre ganhando mais familiaridade com a linguagem. Com o livro, eu espero ter a base teórica necessária para construir Jaci. Jaci é forma como escolhi nomear a minha linguagem, devo falar sobre o motivo em um artigo futuro.
 
 ### Passo 3 - Fork de Lua com foco no uso standalone: Jaci
 
