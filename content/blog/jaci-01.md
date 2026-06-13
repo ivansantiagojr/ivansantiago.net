@@ -52,7 +52,7 @@ true
 >
 ```
 
-Essas características, com o fato de Lua ter uma biblioteca padrão mínima, fazem, na minha opinião, a linguagem não ser a melhor para uso _standalone_, isto é, o uso como um interpretador indepedente por si só, para fazer aplicações "sozinhas", como Python, Ruby, Node.JS, e afins são usados para construir CLIs, aplicações em servidores, aplicações desktop e muito mais. E, caso não tenha ficado claro, isso não é um problema, Lua foi planejada para outro uso. Por isso, eu quero fazer minha própria linguagem, quero usar tudo que Lua tem de bom e adaptar para um outro uso. Ainda mais importante, eu vou poder me divertir e aprender coisas completamente novas nessa jornada. Estou animado com esse projeto.
+Essas características, com o fato de Lua ter uma biblioteca padrão mínima, fazem, na minha opinião, a linguagem não ser a melhor para uso _standalone_, isto é, o uso como um interpretador independente por si só, para fazer aplicações "sozinhas", como Python, Ruby, Node.JS, e afins são usados para construir CLIs, aplicações em servidores, aplicações desktop e muito mais. E, caso não tenha ficado claro, isso não é um problema, Lua foi planejada para outro uso. Por isso, eu quero fazer minha própria linguagem, quero usar tudo que Lua tem de bom e adaptar para um outro uso. Ainda mais importante, eu vou poder me divertir e aprender coisas completamente novas nessa jornada. Estou animado com esse projeto.
 
 ## Meu plano para construir a linguagem
 
