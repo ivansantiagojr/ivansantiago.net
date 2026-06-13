@@ -92,9 +92,11 @@ Como pode ver, eu tracei um longo caminho até chegar à construção de Jaci de
 
 ## Ressalvas
 
-Eu sei, talvez esse projeto já exista, talvez seja o [Luau](https://luau.org/), talvez [LuaJIT](https://luajit.org/) já resolva alguns dos problemas que citei, ou até mesmo algum outro projeto de uma pessoa que teve a mesma ideia que eu (se existir, por favor me avise), mas eu quero fazer o meu próprio para aprender. Eu, certamente, ficarei feliz se o projeto ganhar tração e tiver uma comunidade de usuários, mas eu realmente não acho que isso vá acontecer.
+Eu sei, esse projeto já existe, talvez seja o [Luau](https://luau.org/), talvez [LuaJIT](https://luajit.org/) já resolva alguns dos problemas que citei, e, se você precisa dessa linguagem que descrevi acima agora (pelo menos na parte de ser Lua ajustada para uso standalone), provavelmente [Pluto](https://pluto-lang.org) é o que você procura, porém eu quero fazer a minha própria implementação para aprender. Eu, certamente, ficarei feliz se o projeto ganhar tração e tiver uma comunidade de usuários, mas eu realmente não acho que isso vá acontecer.
 
-Sim, parece ser difícil demais fazer esse projeto, ou que o meu plano coloca muitas coisas na frente do meu objetivo real, mas a minha ideia é me divertir no caminho. Talvez durante algum dos passos eu descubra que nada faz sentido, que eu não gosto de Lua, que eu não gosto de interpretadores, nem de Zig. Tudo bem, eu só quero passar por esse processo. Acho que vou levar aprendizados de alguma forma ou de outra.
+Durante o caminho eu vou decidir e descobrir o que quero pra linguagem: meu próprio design? Ser o mais compatível com Lua possível? Quebrar compatibilidade totalmente? Ainda não sei, vou descobrir conforme aprendo sobre Lua e sobre interpretadores.
+
+Por último, eu sei que parece difícil demais fazer esse projeto, ou que o meu plano coloca muitas coisas na frente do meu objetivo real, mas a minha ideia é me divertir no caminho. Talvez durante algum dos passos eu descubra que nada faz sentido, que eu não gosto de Lua, que eu não gosto de interpretadores, nem de Zig. Tudo bem, eu só quero passar por esse processo. Acho que vou levar aprendizados de alguma forma ou de outra.
 
 ## Acompanhe
 
