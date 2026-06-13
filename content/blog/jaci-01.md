@@ -74,7 +74,7 @@ Nesse sentido, existem 3 projetos que eu gostaria de fazer com Lua:
 
 3. Um jogo com Defold
 
-    Aqui a ideia é sair da minha zona de conforto e usar Lua como uma linguagem embarcada em outro software, no caso, a _game engine_ Defold, que usa Lua como sua principal linguagem de script. Eu quero conhecer o uso de Lua para o que ela foi feita, ver quais bibliotecas são adicionadas e mais características da linguagem. Além disso, fazer jogos é divertido (mesmo que seja trabalhoso), precisa de mais explicação? Esse projeto (e provavelmente nenhum outro) não deve bloquear meu progresso, não preciso acabar todos os itens desse passo para dar início ao próximo.
+    Aqui a ideia é sair da minha zona de conforto e usar Lua como uma linguagem embarcada em outro software, no caso, a [_game engine_](https://pt.wikipedia.org/wiki/Motor_de_jogo) Defold, que usa Lua como sua principal linguagem de script. Eu quero conhecer o uso de Lua para o que ela foi feita, ver quais bibliotecas são adicionadas e mais características da linguagem. Além disso, fazer jogos é divertido (mesmo que seja trabalhoso), precisa de mais explicação? Esse projeto (e provavelmente nenhum outro) não deve bloquear meu progresso, não preciso acabar todos os itens desse passo para dar início ao próximo.
 
 ### Passo 2 - Aprender a fazer interpretadores em Zig
 
