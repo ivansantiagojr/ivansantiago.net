@@ -16,15 +16,15 @@ Comigo, me interessei por diversas linguagens, mas a que mais chamou minha aten�
 
 ## Motivação
 
-Sim, Python pode ficar bem complexo, acredito que isso seja até uma barreira de entrada às vezes — falo isso como alguém que já sofreu com _ambientes virtuais_ e arquivos de dependências (obrigado por facilitar nossas vidas,`pyproject.toml`). E agora, com a complexidade que a tipagem do Python ganha a cada lançamento, imagino que essa barreira esteja ainda maior, principalmente porque está cada vez mais difícil encontrar código Python sem anotações de tipos. Eu mesmo sou um dos culpados por isso, e gosto de usar e estudar os tipos da linguagem, mas vejo que é inegável a complexidade que isso adiciona.
+Sim, Python pode ficar bem complexo, acredito que isso seja até uma barreira de entrada às vezes — falo isso como alguém que já sofreu com _ambientes virtuais_ e arquivos de dependências (obrigado por facilitar nossas vidas,`pyproject.toml`). E agora, com a complexidade que a tipagem do Python ganha a cada lançamento, imagino que essa barreira esteja ainda maior, principalmente porque está cada vez mais difícil encontrar código Python sem anotações de tipos. Eu mesmo sou um dos culpados por isso, e gosto de usar e estudar os tipos da linguagem, mas é inegável a complexidade que isso adiciona.
 
 Então, nesse assunto de linguagens, em uma live na Twitch do [Dunossauro,](https://dunossauro.com) ele comentou como se interessou por Python por que viu em Python a expressividade que ele tinha no Bash, mas com um poder extra de C. E foi aí que parei para pensar: já que Python ficou tão complexo, qual linguagem ocupa esse lugar hoje em dia? Simples como Bash, poderoso como C. Na minha cabeça, veio uma outra linguagem que eu acho interessante, mas não uso muito: Lua.
 
 ## Lua, a linguagem brasileira
 
-[Lua](https://www.lua.org/) é uma linguagem brasileira feita e mantida por uma equipe na PUC-Rio (acesse o site oficial de Lua para conhecer melhor) e eu acho que ela é a linguagem que ocupa esse espaço. Ela é expressiva como Bash, e poderosa como C. E ela não adicionou uma complexidade (que pode ser até descaracterizante) com o tempo. 
+[Lua](https://www.lua.org/) é uma linguagem brasileira feita e mantida por uma equipe na PUC-Rio (acesse o site oficial de Lua para conhecer melhor) e eu acho que ela é a linguagem que ocupa esse espaço. Ela é expressiva como Bash, e poderosa como C. E ela não adicionou uma complexidade descaracterizante com o tempo.
 
-Eu verdadeiramente acredito que Lua é uma das melhores linguagens para começar na programação. Lua é simples, pequena — tanto em armazenamento computacional quanto em mental.
+Eu verdadeiramente acredito que Lua é uma das melhores linguagens para começar na programação. Lua é simples, pequena — tanto em armazenamento computacional quanto mental.
 
 Pelos motivos listados acimas, e por Lua ser uma linguagem planejada para ser [embarcada]() em outros programas, Lua é amplamente usada em [jogos](https://en.wikipedia.org/wiki/Category:Lua_(programming_language)-scriptable_game_engines), [servidores web](https://openresty.org/en/), até no editor de texto que estou usando para escrever essa postagem, o [Neovim](https://neovim.io/).
 Entretanto, pelo fato de lua ser uma linguagem feita para ser embarcada, ela compartilha alguns problemas com outras linguagens do tipo. Assim como o JavaScript, Lua tenta fazer coisas para garantir que o programa nunca quebre. Por exemplo, em Lua, se eu tenho a seguinte tabela:
