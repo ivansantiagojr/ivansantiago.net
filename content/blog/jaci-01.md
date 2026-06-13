@@ -42,7 +42,7 @@ E eu tento acessar:
 animal.comprimento
 ```
 
-Eu não tenho um erro dizendo que a eu não tenho a chave `comprimento` na tabela, a linguagem retorna o valor `nil`, que é um valor completamente válido.
+Eu não tenho um erro dizendo que a eu não tenho a chave `comprimento` na tabela, a linguagem retorna o valor `nil`, que é um valor completamente válido. Na minha opinião, seria mais interessante que fosse retornado/levantado um erro.
 
 Algumas conversões automáticas também ocorrem:
 
