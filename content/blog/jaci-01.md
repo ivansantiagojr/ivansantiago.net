@@ -26,7 +26,7 @@ Então, nesse assunto de linguagens, em uma live na Twitch do [Dunossauro,](http
 
 Eu verdadeiramente acredito que Lua é uma das melhores linguagens para começar na programação. Lua é simples, pequena — tanto em armazenamento computacional quanto mental.
 
-Pelos motivos listados acimas, e por Lua ser uma linguagem planejada para ser [embarcada]() em outros programas, Lua é amplamente usada em [jogos](https://en.wikipedia.org/wiki/Category:Lua_(programming_language)-scriptable_game_engines), [servidores web](https://openresty.org/en/), até no editor de texto que estou usando para escrever essa postagem, o [Neovim](https://neovim.io/).
+Pelos motivos listados acimas, e por Lua ser uma linguagem planejada para ser [embarcada/incoporada](https://pt.wikipedia.org/wiki/Linguagem_de_script#Linguagens_de_extens%C3%A3o/incorporadas) em outros programas, Lua é amplamente usada em [jogos](https://en.wikipedia.org/wiki/Category:Lua_(programming_language)-scriptable_game_engines), [servidores web](https://openresty.org/en/), até no editor de texto que estou usando para escrever essa postagem, o [Neovim](https://neovim.io/).
 Entretanto, pelo fato de Lua ser uma linguagem feita para ser embarcada, ela compartilha alguns problemas com outras linguagens do tipo. Assim como o JavaScript, Lua tenta fazer coisas para garantir que o programa nunca quebre. Por exemplo, em Lua, se eu tenho a seguinte tabela:
 
 ```lua
