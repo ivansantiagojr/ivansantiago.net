@@ -6,19 +6,19 @@
 
 {% block content %}
     <main class="container">
-    <div class="content-container">
-    <h1>Blog do Ivan</h1>
-    {% for post in section.pages %}
-        <article>
-            <a href="{{ post.url }}">
-                <h4>
-                    {{ post.title }}
-                </h4>
-            </a>
-            <p>{{ post.extra.summary }}</p>
-        </article>
-    {% endfor %}
-    </div>
+        <section class="blog-listing">
+            <h1>Blog do Ivan</h1>
+            {% for post in section.pages %}
+                <article>
+                    <a href="{{ post.url }}">
+                        <h4>
+                            {{ post.title }}
+                        </h4>
+                    </a>
+                    <p>{{ post.extra.summary }}</p>
+                </article>
+            {% endfor %}
+        </section>
     </main>
 {% endblock content %}
 

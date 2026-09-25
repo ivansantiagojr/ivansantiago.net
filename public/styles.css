@@ -11,3 +11,9 @@
     display: flex;
     justify-content: center;
 }
+
+.blog-listing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
