@@ -6,3 +6,8 @@
     display: flex;
     column-gap: 1.25rem;
 }
+
+.top-bar {
+    display: flex;
+    justify-content: center;
+}
