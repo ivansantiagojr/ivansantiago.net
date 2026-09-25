@@ -1,3 +1,13 @@
+.top-bar>ul>li {
+    display: inline;
+}
+
+.top-bar>ul {
+    display: flex;
+    column-gap: 1.25rem;
+}
+
 .top-bar {
+    display: flex;
     justify-content: center;
 }
