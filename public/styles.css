@@ -1,4 +1,8 @@
 .top-bar>ul>li {
-    align-items: center;
     display: inline;
+}
+
+.top-bar>ul {
+    display: flex;
+    column-gap: 1.25rem;
 }
