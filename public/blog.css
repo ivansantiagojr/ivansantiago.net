@@ -8,3 +8,9 @@
     display: flex;
     justify-content: center;
 }
+
+@media (max-width: 512px) {
+    .content-container {
+        max-width: 95vw;
+    }
+}
